@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/Layout/Navbar";
 import Footer from "@/components/Layout/Footer";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
+import { ChatBot } from "@/components/ui/ChatBot";
 
 const outfit = Outfit({
   variable: "--font-outfit",
@@ -52,6 +53,7 @@ export default function RootLayout({
             {children}
           </div>
           <Footer />
+          <ChatBot />
         </ThemeProvider>
       </body>
     </html>
