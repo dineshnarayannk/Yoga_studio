@@ -6,6 +6,7 @@ import { Menu, X, Sparkles } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { ThemeToggle } from "@/components/ui/ThemeToggle";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -73,14 +74,14 @@ export default function Navbar() {
                 window.scrollTo({ top: 0, behavior: "smooth" });
               }
             }}
-            className="flex items-center gap-2 text-xl font-bold font-display tracking-tight text-astrian-charcoal cursor-pointer"
+            className="flex items-center gap-2 text-xl font-bold font-display tracking-tight text-astrian-charcoal dark:text-gray-100 cursor-pointer"
           >
             <div className="h-8 w-8 rounded-full bg-astrian-sage flex items-center justify-center text-white">
               <Sparkles className="h-4.5 w-4.5" />
             </div>
             <span>Astrion</span>
           </Link>
-
+ 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
@@ -90,15 +91,16 @@ export default function Navbar() {
                 onClick={(e) => {
                   handleLinkClick(e, link.href);
                 }}
-                className="text-[0.95rem] font-medium text-astrian-charcoal/80 hover:text-astrian-sage transition-colors duration-300"
+                className="text-[0.95rem] font-medium text-astrian-charcoal/80 dark:text-gray-300 hover:text-astrian-sage dark:hover:text-astrian-leaf transition-colors duration-300"
               >
                 {link.label}
               </Link>
             ))}
           </nav>
-
-          {/* Action Button */}
-          <div className="hidden md:block">
+ 
+          {/* Action Button & Theme Toggle */}
+          <div className="hidden md:flex items-center gap-4">
+            <ThemeToggle />
             <Link href="/enquiry">
               <Button
                 variant="primary"
@@ -108,18 +110,21 @@ export default function Navbar() {
               </Button>
             </Link>
           </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 text-astrian-charcoal hover:text-astrian-sage transition-colors duration-300 cursor-pointer"
-            aria-label="Toggle menu"
-          >
-            {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-          </button>
+ 
+          {/* Mobile Actions (Theme Toggle & Menu Button) */}
+          <div className="flex md:hidden items-center gap-2">
+            <ThemeToggle />
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="p-2 text-astrian-charcoal dark:text-gray-100 hover:text-astrian-sage transition-colors duration-300 cursor-pointer"
+              aria-label="Toggle menu"
+            >
+              {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </button>
+          </div>
         </div>
       </header>
-
+ 
       {/* Mobile Drawer */}
       <AnimatePresence>
         {isMobileMenuOpen && (
@@ -128,7 +133,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 bg-astrian-oat pt-24 px-6 md:hidden flex flex-col justify-between pb-12"
+            className="fixed inset-0 z-40 bg-astrian-oat dark:bg-[#121413] pt-24 px-6 md:hidden flex flex-col justify-between pb-12"
           >
             <div className="flex flex-col gap-6">
               {navLinks.map((link) => (
@@ -138,7 +143,7 @@ export default function Navbar() {
                   onClick={(e) => {
                     handleLinkClick(e, link.href);
                   }}
-                  className="text-2xl font-medium text-astrian-charcoal hover:text-astrian-sage transition-colors duration-300"
+                  className="text-2xl font-medium text-astrian-charcoal dark:text-gray-100 hover:text-astrian-sage transition-colors duration-300"
                 >
                   {link.label}
                 </Link>

@@ -3,6 +3,7 @@ import { Outfit, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Layout/Navbar";
 import Footer from "@/components/Layout/Footer";
+import { ThemeProvider } from "@/components/providers/ThemeProvider";
 
 const outfit = Outfit({
   variable: "--font-outfit",
@@ -37,13 +38,21 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${outfit.variable} ${plusJakartaSans.variable} scroll-smooth antialiased`}
+      suppressHydrationWarning
     >
-      <body className="bg-astrian-oat text-astrian-charcoal min-h-screen flex flex-col font-sans overflow-x-hidden selection:bg-astrian-sage selection:text-white">
-        <Navbar />
-        <div className="flex-grow">
-          {children}
-        </div>
-        <Footer />
+      <body className="bg-astrian-oat text-astrian-charcoal min-h-screen flex flex-col font-sans overflow-x-hidden selection:bg-astrian-sage selection:text-white dark:bg-[#121413] dark:text-gray-100 transition-colors duration-300">
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Navbar />
+          <div className="flex-grow">
+            {children}
+          </div>
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );

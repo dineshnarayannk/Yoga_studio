@@ -56,6 +56,12 @@ body {
   background-color: var(--color-astrian-oat);
   color: var(--color-astrian-charcoal);
   font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dark body {
+  background-color: #121413;
+  color: #f3f4f6; /* gray-100 */
 }
 
 /* Base Headings styling */
@@ -79,6 +85,12 @@ h1, h2, h3, h4, h5, h6 {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(239, 236, 225, 0.5);
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.dark .glass-panel {
+  background: rgba(28, 31, 29, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .glass-panel-dark {
@@ -86,4 +98,16 @@ h1, h2, h3, h4, h5, h6 {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: #121413;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #2b302d;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: var(--color-astrian-sage);
 }
