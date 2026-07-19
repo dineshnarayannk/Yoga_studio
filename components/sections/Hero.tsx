@@ -142,7 +142,7 @@ export default function Hero() {
         <motion.div
           initial={{ opacity: 0, scale: 0.95, x: 30 }}
           animate={{ opacity: 1, scale: 1, x: 0 }}
-          transition={{ duration: 0.8, cubicBezier: [0.16, 1, 0.3, 1], delay: 0.2 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
           className="lg:col-span-5 relative flex justify-center items-center w-full"
         >
           {/* Framed Image Container */}

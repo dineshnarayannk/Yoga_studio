@@ -1,8 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "react-wrap-balancer"; // Wait, react-wrap-balancer is not in package.json, use standard framer-motion instead
-import { motion as motionFramer } from "framer-motion";
+import { motion } from "framer-motion";
 
 export default function Gallery() {
   const images = [
@@ -31,7 +30,7 @@ export default function Gallery() {
         {/* Gallery Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[250px]">
           {images.map((img, index) => (
-            <motionFramer.div
+            <motion.div
               key={index}
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -49,7 +48,7 @@ export default function Gallery() {
               <div className="absolute inset-0 bg-gradient-to-t from-astrian-charcoal/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
                 <span className="text-white text-lg font-medium font-display">{img.alt}</span>
               </div>
-            </motionFramer.div>
+            </motion.div>
           ))}
         </div>
       </div>
