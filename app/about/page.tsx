@@ -45,6 +45,8 @@ const values = [
 export default function AboutPage() {
   return (
     <div className="min-h-screen bg-astrian-oat dark:bg-[#121413] pt-32 pb-24 text-astrian-charcoal dark:text-gray-100 font-sans transition-colors duration-300">
+      <title>About Us | Team Astrion</title>
+      <meta name="description" content="Learn about Astrion Studio, our philosophy of mind-body unity, our core principles, and our expert guides." />
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         
         {/* Header */}

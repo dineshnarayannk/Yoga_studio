@@ -34,6 +34,8 @@ export default function ContactPage() {
 
   return (
     <div className="min-h-screen bg-astrian-oat dark:bg-[#121413] pt-32 pb-24 text-astrian-charcoal dark:text-gray-100 font-sans transition-colors duration-300">
+      <title>Contact Us | Team Astrion</title>
+      <meta name="description" content="Get in touch with Astrion Studio. Send us a message, view our location, phone, email, and concierge hours." />
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         
         {/* Header */}
