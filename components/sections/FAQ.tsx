@@ -27,23 +27,23 @@ export default function FAQ() {
   ];
 
   return (
-    <section id="faq" className="py-24 bg-astrian-cream relative overflow-hidden">
+    <section id="faq" className="py-24 bg-astrian-cream dark:bg-[#1c1f1d] relative overflow-hidden transition-colors duration-300">
       <div className="max-w-4xl mx-auto px-6 md:px-12">
         {/* Header */}
         <div className="text-center mb-16">
-          <span className="text-sm font-semibold tracking-wider text-astrian-sage uppercase bg-astrian-sage/10 px-4 py-1.5 rounded-full inline-block mb-4">
+          <span className="text-sm font-semibold tracking-wider text-astrian-sage dark:text-astrian-leaf uppercase bg-astrian-sage/10 dark:bg-astrian-sage/20 px-4 py-1.5 rounded-full inline-block mb-4">
             Common Inquiries
           </span>
-          <h2 className="text-4xl md:text-5xl font-bold text-astrian-charcoal mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-astrian-charcoal dark:text-gray-100 mb-4">
             Frequently Asked Questions
           </h2>
-          <p className="text-lg text-astrian-charcoal/70 font-light leading-relaxed">
+          <p className="text-lg text-astrian-charcoal/70 dark:text-gray-300 font-light leading-relaxed">
             Have questions about stepping onto the mat? Here are answers to what new practitioners ask most.
           </p>
         </div>
 
         {/* Accordion List */}
-        <div className="bg-white rounded-[2.5rem] border border-astrian-clay/60 p-8 md:p-12 shadow-[0_12px_40px_rgba(17,24,39,0.03)]">
+        <div className="bg-white dark:bg-[#121413] rounded-[2.5rem] border border-astrian-clay/60 dark:border-white/10 p-8 md:p-12 shadow-[0_12px_40px_rgba(17,24,39,0.03)] transition-colors duration-300">
           <Accordion items={faqItems} />
         </div>
       </div>

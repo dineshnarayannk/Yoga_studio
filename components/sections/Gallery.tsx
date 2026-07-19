@@ -12,17 +12,17 @@ export default function Gallery() {
   ];
 
   return (
-    <section id="gallery" className="py-24 bg-astrian-oat relative overflow-hidden">
+    <section id="gallery" className="py-24 bg-astrian-oat dark:bg-[#121413] relative overflow-hidden transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="text-sm font-semibold tracking-wider text-astrian-sage uppercase bg-astrian-sage/10 px-4 py-1.5 rounded-full inline-block mb-4">
+          <span className="text-sm font-semibold tracking-wider text-astrian-sage dark:text-astrian-leaf uppercase bg-astrian-sage/10 dark:bg-astrian-sage/20 px-4 py-1.5 rounded-full inline-block mb-4">
             Studio Tour
           </span>
-          <h2 className="text-4xl md:text-5xl font-bold text-astrian-charcoal mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-astrian-charcoal dark:text-gray-100 mb-4">
             Our Sacred Space
           </h2>
-          <p className="text-lg text-astrian-charcoal/70 font-light leading-relaxed">
+          <p className="text-lg text-astrian-charcoal/70 dark:text-gray-300 font-light leading-relaxed">
             Welcome to a light-filled sanctuary designed with raw wood, linen, and earth tones to calm your senses the moment you enter.
           </p>
         </div>
@@ -36,7 +36,7 @@ export default function Gallery() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1, duration: 0.5 }}
-              className={`relative overflow-hidden rounded-[2rem] border-4 border-white shadow-sm bg-astrian-clay/30 group ${img.span}`}
+              className={`relative overflow-hidden rounded-[2rem] border-4 border-white dark:border-[#1c1f1d] shadow-sm bg-astrian-clay/30 dark:bg-[#1c1f1d]/50 group ${img.span}`}
             >
               <Image
                 src={img.src}

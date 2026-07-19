@@ -15,19 +15,19 @@ interface AccordionItemProps {
 
 export function AccordionItem({ question, answer, isOpen, onToggle }: AccordionItemProps) {
   return (
-    <div className="border-b border-astrian-clay py-4 last:border-b-0">
+    <div className="border-b border-astrian-clay dark:border-white/5 py-4 last:border-b-0">
       <button
         onClick={onToggle}
         className="flex w-full items-center justify-between text-left py-4 focus:outline-none cursor-pointer group"
         aria-expanded={isOpen}
       >
-        <span className="text-lg font-medium text-astrian-charcoal group-hover:text-astrian-sage transition-colors duration-300">
+        <span className="text-lg font-medium text-astrian-charcoal dark:text-gray-100 group-hover:text-astrian-sage dark:group-hover:text-astrian-leaf transition-colors duration-300">
           {question}
         </span>
         <motion.span
           animate={{ rotate: isOpen ? 180 : 0 }}
           transition={{ duration: 0.3, ease: "easeInOut" }}
-          className="text-astrian-sage ml-4"
+          className="text-astrian-sage dark:text-astrian-leaf ml-4"
         >
           <ChevronDown className="h-5 w-5" />
         </motion.span>
@@ -41,7 +41,7 @@ export function AccordionItem({ question, answer, isOpen, onToggle }: AccordionI
             transition={{ duration: 0.3, ease: "easeInOut" }}
             className="overflow-hidden"
           >
-            <div className="pb-6 pt-2 text-astrian-charcoal/70 leading-relaxed text-pretty text-[1.05rem]">
+            <div className="pb-6 pt-2 text-astrian-charcoal/70 dark:text-gray-300 leading-relaxed text-pretty text-[1.05rem]">
               {answer}
             </div>
           </motion.div>
@@ -64,7 +64,7 @@ export function Accordion({ items, className }: AccordionProps) {
   };
 
   return (
-    <div className={cn("divide-y divide-astrian-clay", className)}>
+    <div className={cn("divide-y divide-astrian-clay dark:divide-white/5", className)}>
       {items.map((item) => (
         <AccordionItem
           key={item.id}

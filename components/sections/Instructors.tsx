@@ -39,17 +39,17 @@ export default function Instructors() {
   ];
 
   return (
-    <section id="instructors" className="py-24 bg-astrian-cream relative overflow-hidden">
+    <section id="instructors" className="py-24 bg-astrian-cream dark:bg-[#1c1f1d] relative overflow-hidden transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="text-sm font-semibold tracking-wider text-astrian-sage uppercase bg-astrian-sage/10 px-4 py-1.5 rounded-full inline-block mb-4">
+          <span className="text-sm font-semibold tracking-wider text-astrian-sage dark:text-astrian-leaf uppercase bg-astrian-sage/10 dark:bg-astrian-sage/20 px-4 py-1.5 rounded-full inline-block mb-4">
             Expert Guides
           </span>
-          <h2 className="text-4xl md:text-5xl font-bold text-astrian-charcoal mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-astrian-charcoal dark:text-gray-100 mb-4">
             Meet Our Instructors
           </h2>
-          <p className="text-lg text-astrian-charcoal/70 font-light leading-relaxed">
+          <p className="text-lg text-astrian-charcoal/70 dark:text-gray-300 font-light leading-relaxed">
             Our certified guides bring diverse training backgrounds, deep wisdom, and welcoming hearts to every class on the mat.
           </p>
         </div>
@@ -66,7 +66,7 @@ export default function Instructors() {
             >
               <Card className="overflow-hidden p-0 h-full flex flex-col hover:border-astrian-sage/20 transition-all duration-300 group">
                 {/* Image Wrapper */}
-                <div className="relative w-full aspect-[4/5] bg-astrian-clay">
+                <div className="relative w-full aspect-[4/5] bg-astrian-clay dark:bg-[#222623] transition-colors duration-300">
                   <Image
                     src={member.image}
                     alt={member.name}
@@ -77,19 +77,19 @@ export default function Instructors() {
                 {/* Info Wrapper */}
                 <div className="p-6 flex flex-col justify-between flex-grow">
                   <div>
-                    <span className="text-xs font-semibold uppercase tracking-wider text-astrian-sage">
+                    <span className="text-xs font-semibold uppercase tracking-wider text-astrian-sage dark:text-astrian-leaf">
                       {member.role}
                     </span>
-                    <h3 className="text-xl font-bold text-astrian-charcoal mt-1 mb-2 font-display">
+                    <h3 className="text-xl font-bold text-astrian-charcoal dark:text-gray-100 mt-1 mb-2 font-display">
                       {member.name}
                     </h3>
-                    <p className="text-astrian-charcoal/70 leading-relaxed font-light text-sm mb-6">
+                    <p className="text-astrian-charcoal/70 dark:text-gray-300 leading-relaxed font-light text-sm mb-6">
                       {member.bio}
                     </p>
                   </div>
                   <Link 
                     href={`/instructors/${member.id}`} 
-                    className="inline-flex items-center gap-1.5 text-sm font-semibold text-astrian-sage hover:text-astrian-moss transition-colors cursor-pointer"
+                    className="inline-flex items-center gap-1.5 text-sm font-semibold text-astrian-sage hover:text-astrian-moss dark:text-astrian-leaf dark:hover:text-white transition-colors cursor-pointer"
                   >
                     <span>View Profile</span>
                     <ArrowRight className="h-4 w-4" />

@@ -71,18 +71,18 @@ export default function ClassesPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-astrian-oat pt-32 pb-24 text-astrian-charcoal font-sans">
+    <div className="min-h-screen bg-astrian-oat dark:bg-[#121413] pt-32 pb-24 text-astrian-charcoal dark:text-gray-100 font-sans transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         
         {/* Header */}
         <div className="max-w-3xl mx-auto text-center mb-20">
-          <span className="text-sm font-semibold tracking-wider text-astrian-sage uppercase bg-astrian-sage/10 px-4 py-1.5 rounded-full inline-block mb-4">
+          <span className="text-sm font-semibold tracking-wider text-astrian-sage dark:text-astrian-leaf uppercase bg-astrian-sage/10 dark:bg-astrian-sage/20 px-4 py-1.5 rounded-full inline-block mb-4">
             Curriculum
           </span>
-          <h1 className="text-5xl md:text-6xl font-bold font-display text-astrian-charcoal mb-6 leading-tight">
+          <h1 className="text-5xl md:text-6xl font-bold font-display text-astrian-charcoal dark:text-gray-100 mb-6 leading-tight">
             Our Signature Classes
           </h1>
-          <p className="text-lg text-astrian-charcoal/70 font-light leading-relaxed">
+          <p className="text-lg text-astrian-charcoal/70 dark:text-gray-300 font-light leading-relaxed">
             From active, high-intensity flows to gentle sound meditation and restorative yin, our curriculum supports all aspects of your mental and physical wellness.
           </p>
         </div>
@@ -100,17 +100,17 @@ export default function ClassesPage() {
               <Card className="h-full flex flex-col justify-between hover:border-astrian-sage/20 hover:shadow-lg transition-all duration-300">
                 <div>
                   <div className="flex items-center justify-between mb-6">
-                    <div className="h-12 w-12 rounded-2xl bg-astrian-cream border border-astrian-clay flex items-center justify-center">
+                    <div className="h-12 w-12 rounded-2xl bg-astrian-cream dark:bg-[#1c1f1d] border border-astrian-clay dark:border-white/10 flex items-center justify-center transition-colors duration-300">
                       {item.icon}
                     </div>
-                    <span className="text-xs font-semibold uppercase tracking-wider text-astrian-sage bg-astrian-sage/10 px-3 py-1 rounded-full">
+                    <span className="text-xs font-semibold uppercase tracking-wider text-astrian-sage dark:text-astrian-leaf bg-astrian-sage/10 dark:bg-astrian-sage/20 px-3 py-1 rounded-full">
                       {item.focus}
                     </span>
                   </div>
                   
-                  <h3 className="text-2xl font-bold text-astrian-charcoal font-display mb-2">{item.title}</h3>
+                  <h3 className="text-2xl font-bold text-astrian-charcoal dark:text-gray-100 font-display mb-2">{item.title}</h3>
                   
-                  <div className="flex flex-wrap gap-x-4 gap-y-1.5 text-xs font-medium text-astrian-charcoal/60 mb-4 uppercase tracking-wider">
+                  <div className="flex flex-wrap gap-x-4 gap-y-1.5 text-xs font-medium text-astrian-charcoal/60 dark:text-gray-400 mb-4 uppercase tracking-wider">
                     <span>{item.level}</span>
                     <span>•</span>
                     <span>{item.duration}</span>
@@ -118,15 +118,15 @@ export default function ClassesPage() {
                     <span>{item.intensity} Intensity</span>
                   </div>
                   
-                  <p className="text-astrian-charcoal/70 leading-relaxed font-light mb-6 text-sm">
+                  <p className="text-astrian-charcoal/70 dark:text-gray-300 leading-relaxed font-light mb-6 text-sm">
                     {item.description}
                   </p>
 
-                  <div className="space-y-1.5 border-t border-astrian-clay/60 pt-4 mb-6">
-                    <h4 className="text-xs font-bold uppercase tracking-wider text-astrian-charcoal/40">Core Benefits</h4>
+                  <div className="space-y-1.5 border-t border-astrian-clay/60 dark:border-white/5 pt-4 mb-6">
+                    <h4 className="text-xs font-bold uppercase tracking-wider text-astrian-charcoal/40 dark:text-gray-500">Core Benefits</h4>
                     <div className="flex flex-wrap gap-2 pt-1">
                       {item.benefits.map((benefit, idx) => (
-                        <span key={idx} className="text-xs font-semibold text-astrian-charcoal/80 bg-astrian-cream px-2.5 py-1 rounded-md border border-astrian-clay/50">
+                        <span key={idx} className="text-xs font-semibold text-astrian-charcoal/80 dark:text-gray-200 bg-astrian-cream dark:bg-[#1c1f1d] px-2.5 py-1 rounded-md border border-astrian-clay/50 dark:border-white/10 transition-colors duration-300">
                           {benefit}
                         </span>
                       ))}

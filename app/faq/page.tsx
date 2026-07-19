@@ -45,38 +45,38 @@ export default function FAQPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-astrian-oat pt-32 pb-24 text-astrian-charcoal font-sans">
+    <div className="min-h-screen bg-astrian-oat dark:bg-[#121413] pt-32 pb-24 text-astrian-charcoal dark:text-gray-100 font-sans transition-colors duration-300">
       <div className="max-w-4xl mx-auto px-6 md:px-12">
         
         {/* Header */}
         <div className="text-center mb-16">
-          <span className="text-sm font-semibold tracking-wider text-astrian-sage uppercase bg-astrian-sage/10 px-4 py-1.5 rounded-full inline-block mb-4">
+          <span className="text-sm font-semibold tracking-wider text-astrian-sage dark:text-astrian-leaf uppercase bg-astrian-sage/10 dark:bg-astrian-sage/20 px-4 py-1.5 rounded-full inline-block mb-4">
             Support Portal
           </span>
-          <h1 className="text-5xl md:text-6xl font-bold font-display text-astrian-charcoal mb-6 leading-tight">
+          <h1 className="text-5xl md:text-6xl font-bold font-display text-astrian-charcoal dark:text-gray-100 mb-6 leading-tight">
             Frequently Asked Questions
           </h1>
-          <p className="text-lg text-astrian-charcoal/70 font-light leading-relaxed">
+          <p className="text-lg text-astrian-charcoal/70 dark:text-gray-300 font-light leading-relaxed">
             Everything you need to know about starting your yoga practice at Astrion. Find details on logistics, etiquette, and booking.
           </p>
         </div>
 
         {/* Accordion list container */}
-        <div className="bg-white rounded-[2.5rem] border border-astrian-clay/60 p-8 md:p-12 shadow-[0_12px_40px_rgba(17,24,39,0.03)] mb-16">
-          <div className="flex items-center gap-3 mb-8 border-b border-astrian-clay pb-6">
-            <HelpCircle className="h-6 w-6 text-astrian-sage" />
-            <h2 className="text-2xl font-bold text-astrian-charcoal font-display">General Inquiries</h2>
+        <div className="bg-white dark:bg-[#1c1f1d] rounded-[2.5rem] border border-astrian-clay/60 dark:border-white/10 p-8 md:p-12 shadow-[0_12px_40px_rgba(17,24,39,0.03)] mb-16 transition-colors duration-300">
+          <div className="flex items-center gap-3 mb-8 border-b border-astrian-clay dark:border-white/5 pb-6">
+            <HelpCircle className="h-6 w-6 text-astrian-sage dark:text-astrian-leaf" />
+            <h2 className="text-2xl font-bold text-astrian-charcoal dark:text-gray-100 font-display">General Inquiries</h2>
           </div>
           <Accordion items={faqExtendedItems} />
         </div>
 
         {/* Contact CTA */}
-        <div className="bg-astrian-cream rounded-[2.5rem] border border-astrian-clay p-8 md:p-12 text-center flex flex-col items-center justify-center">
-          <div className="h-12 w-12 rounded-full bg-astrian-sage/10 text-astrian-sage flex items-center justify-center mb-4">
+        <div className="bg-astrian-cream dark:bg-[#1c1f1d] rounded-[2.5rem] border border-astrian-clay dark:border-white/10 p-8 md:p-12 text-center flex flex-col items-center justify-center transition-colors duration-300">
+          <div className="h-12 w-12 rounded-full bg-astrian-sage/10 dark:bg-astrian-sage/20 text-astrian-sage dark:text-astrian-leaf flex items-center justify-center mb-4">
             <MessagesSquare className="h-6 w-6" />
           </div>
-          <h3 className="text-2xl font-bold text-astrian-charcoal mb-2 font-display">Still Have Questions?</h3>
-          <p className="text-astrian-charcoal/60 font-light mb-6 max-w-sm">
+          <h3 className="text-2xl font-bold text-astrian-charcoal dark:text-gray-100 mb-2 font-display">Still Have Questions?</h3>
+          <p className="text-astrian-charcoal/60 dark:text-gray-400 font-light mb-6 max-w-sm">
             We are here to support your journey. Get in touch with our studio concierge, and we will get back to you within 24 hours.
           </p>
           <Link href="/enquiry">
@@ -85,7 +85,6 @@ export default function FAQPage() {
             </Button>
           </Link>
         </div>
-
       </div>
     </div>
   );

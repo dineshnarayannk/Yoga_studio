@@ -15,18 +15,18 @@ export default function GalleryPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-astrian-oat pt-32 pb-24 text-astrian-charcoal font-sans">
+    <div className="min-h-screen bg-astrian-oat dark:bg-[#121413] pt-32 pb-24 text-astrian-charcoal dark:text-gray-100 font-sans transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         
         {/* Header */}
         <div className="max-w-3xl mx-auto text-center mb-20">
-          <span className="text-sm font-semibold tracking-wider text-astrian-sage uppercase bg-astrian-sage/10 px-4 py-1.5 rounded-full inline-block mb-4">
+          <span className="text-sm font-semibold tracking-wider text-astrian-sage dark:text-astrian-leaf uppercase bg-astrian-sage/10 dark:bg-astrian-sage/20 px-4 py-1.5 rounded-full inline-block mb-4">
             Visual Tour
           </span>
-          <h1 className="text-5xl md:text-6xl font-bold font-display text-astrian-charcoal mb-6 leading-tight">
+          <h1 className="text-5xl md:text-6xl font-bold font-display text-astrian-charcoal dark:text-gray-100 mb-6 leading-tight">
             Our Sacred Space
           </h1>
-          <p className="text-lg text-astrian-charcoal/70 font-light leading-relaxed">
+          <p className="text-lg text-astrian-charcoal/70 dark:text-gray-300 font-light leading-relaxed">
             Take a look inside Astrion. Our light-filled sanctuary is crafted with raw wood, organic linen, and custom clay textures to help you feel grounded and present.
           </p>
         </div>
@@ -40,7 +40,7 @@ export default function GalleryPage() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.08, duration: 0.5 }}
-              className={`relative overflow-hidden rounded-[2.5rem] border-8 border-white shadow-[0_8px_30px_rgba(17,24,39,0.02)] bg-astrian-clay/30 group ${img.span}`}
+              className={`relative overflow-hidden rounded-[2.5rem] border-8 border-white dark:border-[#1c1f1d] shadow-[0_8px_30px_rgba(17,24,39,0.02)] bg-astrian-clay/30 dark:bg-[#1c1f1d]/50 group ${img.span} transition-colors duration-300`}
             >
               <Image
                 src={img.src}

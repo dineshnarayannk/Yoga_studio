@@ -85,30 +85,30 @@ export default function SchedulePage() {
   });
 
   return (
-    <div className="min-h-screen bg-astrian-oat pt-32 pb-24 text-astrian-charcoal font-sans">
+    <div className="min-h-screen bg-astrian-oat dark:bg-[#121413] pt-32 pb-24 text-astrian-charcoal dark:text-gray-100 font-sans transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         
         {/* Header */}
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <span className="text-sm font-semibold tracking-wider text-astrian-sage uppercase bg-astrian-sage/10 px-4 py-1.5 rounded-full inline-block mb-4">
+          <span className="text-sm font-semibold tracking-wider text-astrian-sage dark:text-astrian-leaf uppercase bg-astrian-sage/10 dark:bg-astrian-sage/20 px-4 py-1.5 rounded-full inline-block mb-4">
             Timetable
           </span>
-          <h1 className="text-5xl md:text-6xl font-bold font-display text-astrian-charcoal mb-6 leading-tight">
+          <h1 className="text-5xl md:text-6xl font-bold font-display text-astrian-charcoal dark:text-gray-100 mb-6 leading-tight">
             Weekly Calendar
           </h1>
-          <p className="text-lg text-astrian-charcoal/70 font-light leading-relaxed">
+          <p className="text-lg text-astrian-charcoal/70 dark:text-gray-300 font-light leading-relaxed">
             Plan your practice week. Use the filters below to browse classes by day, yoga discipline, or experience level.
           </p>
         </div>
 
         {/* Filters Panel */}
-        <Card className="p-8 mb-12 bg-white border border-astrian-clay/60 shadow-sm rounded-[2.5rem]">
+        <Card className="p-8 mb-12 bg-white dark:bg-[#1c1f1d] border border-astrian-clay/60 dark:border-white/10 shadow-sm rounded-[2.5rem] transition-colors duration-300">
           <div className="flex flex-col gap-8">
             
             {/* Days Filter */}
             <div className="w-full">
-              <h3 className="text-xs font-bold uppercase tracking-wider text-astrian-charcoal/40 mb-4 flex items-center gap-2">
-                <Calendar className="h-4 w-4 text-astrian-sage" />
+              <h3 className="text-xs font-bold uppercase tracking-wider text-astrian-charcoal/40 dark:text-gray-400 mb-4 flex items-center gap-2">
+                <Calendar className="h-4 w-4 text-astrian-sage dark:text-astrian-leaf" />
                 Select Day
               </h3>
               <div className="flex flex-wrap gap-2.5">
@@ -118,8 +118,8 @@ export default function SchedulePage() {
                     onClick={() => setSelectedDay(day)}
                     className={`px-5 py-3 rounded-full text-sm font-semibold transition-all duration-300 cursor-pointer ${
                       selectedDay === day
-                        ? "bg-astrian-sage text-white shadow-sm"
-                        : "bg-astrian-cream/60 border border-astrian-clay hover:border-astrian-sage/30 text-astrian-charcoal"
+                        ? "bg-astrian-sage dark:bg-astrian-sage text-white shadow-sm"
+                        : "bg-astrian-cream/60 dark:bg-[#121413] border border-astrian-clay dark:border-white/10 hover:border-astrian-sage/30 text-astrian-charcoal dark:text-gray-200"
                     }`}
                   >
                     {day}
@@ -129,12 +129,12 @@ export default function SchedulePage() {
             </div>
 
             {/* Styles & Levels filters (Grid) */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 border-t border-astrian-clay/40 pt-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 border-t border-astrian-clay/40 dark:border-white/5 pt-8">
               
               {/* Category Filter */}
               <div>
-                <h3 className="text-xs font-bold uppercase tracking-wider text-astrian-charcoal/40 mb-4 flex items-center gap-2">
-                  <SlidersHorizontal className="h-4 w-4 text-astrian-sage" />
+                <h3 className="text-xs font-bold uppercase tracking-wider text-astrian-charcoal/40 dark:text-gray-400 mb-4 flex items-center gap-2">
+                  <SlidersHorizontal className="h-4 w-4 text-astrian-sage dark:text-astrian-leaf" />
                   Filter by Style
                 </h3>
                 <div className="flex flex-wrap gap-2">
@@ -144,8 +144,8 @@ export default function SchedulePage() {
                       onClick={() => setCategory(cat.value)}
                       className={`px-4 py-2 rounded-xl text-xs font-semibold uppercase tracking-wider transition-all duration-300 cursor-pointer flex items-center gap-1.5 ${
                         category === cat.value
-                          ? "bg-astrian-charcoal text-white"
-                          : "bg-astrian-cream/40 border border-astrian-clay text-astrian-charcoal/80 hover:bg-astrian-clay"
+                          ? "bg-astrian-charcoal dark:bg-gray-100 text-white dark:text-[#121413]"
+                          : "bg-astrian-cream/40 dark:bg-[#121413] border border-astrian-clay dark:border-white/10 text-astrian-charcoal/80 dark:text-gray-200 hover:bg-astrian-clay dark:hover:bg-[#1c1f1d]"
                       }`}
                     >
                       {category === cat.value && <Check className="h-3 w-3" />}
@@ -157,8 +157,8 @@ export default function SchedulePage() {
 
               {/* Difficulty Filter */}
               <div>
-                <h3 className="text-xs font-bold uppercase tracking-wider text-astrian-charcoal/40 mb-4 flex items-center gap-2">
-                  <SlidersHorizontal className="h-4 w-4 text-astrian-sage" />
+                <h3 className="text-xs font-bold uppercase tracking-wider text-astrian-charcoal/40 dark:text-gray-400 mb-4 flex items-center gap-2">
+                  <SlidersHorizontal className="h-4 w-4 text-astrian-sage dark:text-astrian-leaf" />
                   Filter by Level
                 </h3>
                 <div className="flex flex-wrap gap-2">
@@ -168,8 +168,8 @@ export default function SchedulePage() {
                       onClick={() => setDifficulty(level.value)}
                       className={`px-4 py-2 rounded-xl text-xs font-semibold uppercase tracking-wider transition-all duration-300 cursor-pointer flex items-center gap-1.5 ${
                         difficulty === level.value
-                          ? "bg-astrian-charcoal text-white"
-                          : "bg-astrian-cream/40 border border-astrian-clay text-astrian-charcoal/80 hover:bg-astrian-clay"
+                          ? "bg-astrian-charcoal dark:bg-gray-100 text-white dark:text-[#121413]"
+                          : "bg-astrian-cream/40 dark:bg-[#121413] border border-astrian-clay dark:border-white/10 text-astrian-charcoal/80 dark:text-gray-200 hover:bg-astrian-clay dark:hover:bg-[#1c1f1d]"
                       }`}
                     >
                       {difficulty === level.value && <Check className="h-3 w-3" />}
@@ -185,8 +185,8 @@ export default function SchedulePage() {
         </Card>
 
         {/* Schedule List */}
-        <div className="max-w-4xl mx-auto bg-white rounded-[2.5rem] border border-astrian-clay/60 shadow-[0_12px_40px_rgba(17,24,39,0.03)] overflow-hidden">
-          <div className="divide-y divide-astrian-clay">
+        <div className="max-w-4xl mx-auto bg-white dark:bg-[#1c1f1d] rounded-[2.5rem] border border-astrian-clay/60 dark:border-white/10 shadow-[0_12px_40px_rgba(17,24,39,0.03)] overflow-hidden transition-colors duration-300">
+          <div className="divide-y divide-astrian-clay dark:divide-white/5">
             <AnimatePresence mode="popLayout">
               {filteredSessions.length > 0 ? (
                 filteredSessions.map((slot, index) => (
@@ -197,30 +197,30 @@ export default function SchedulePage() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, scale: 0.98 }}
                     transition={{ duration: 0.4, type: "spring", stiffness: 100 }}
-                    className="p-6 md:p-8 flex flex-col md:flex-row md:items-center justify-between gap-6 hover:bg-astrian-cream/30 transition-colors duration-300"
+                    className="p-6 md:p-8 flex flex-col md:flex-row md:items-center justify-between gap-6 hover:bg-astrian-cream/30 dark:hover:bg-[#222623]/30 transition-colors duration-300"
                   >
                     {/* Time Block */}
                     <div className="flex items-center gap-3">
-                      <div className="h-10 w-10 rounded-full bg-astrian-cream flex items-center justify-center text-astrian-sage">
+                      <div className="h-10 w-10 rounded-full bg-astrian-cream dark:bg-[#222623] flex items-center justify-center text-astrian-sage dark:text-astrian-leaf">
                         <Clock className="h-5 w-5" />
                       </div>
                       <div>
-                        <p className="text-sm font-semibold text-astrian-charcoal/40 uppercase tracking-wider">Time</p>
-                        <p className="text-base font-semibold text-astrian-charcoal">{slot.time}</p>
+                        <p className="text-sm font-semibold text-astrian-charcoal/40 dark:text-gray-400 uppercase tracking-wider">Time</p>
+                        <p className="text-base font-semibold text-astrian-charcoal dark:text-gray-100">{slot.time}</p>
                       </div>
                     </div>
 
                     {/* Class Details */}
                     <div className="flex-1 md:pl-12">
                       <div className="flex gap-2 mb-1.5">
-                        <span className="inline-block text-[10px] font-bold uppercase tracking-wider text-astrian-sage bg-astrian-sage/10 px-2.5 py-0.5 rounded-md">
+                        <span className="inline-block text-[10px] font-bold uppercase tracking-wider text-astrian-sage dark:text-astrian-leaf bg-astrian-sage/10 dark:bg-astrian-sage/20 px-2.5 py-0.5 rounded-md">
                           {slot.type}
                         </span>
-                        <span className="inline-block text-[10px] font-bold uppercase tracking-wider text-astrian-charcoal/60 bg-astrian-clay px-2.5 py-0.5 rounded-md">
+                        <span className="inline-block text-[10px] font-bold uppercase tracking-wider text-astrian-charcoal/60 dark:text-gray-300 bg-astrian-clay dark:bg-[#222623] px-2.5 py-0.5 rounded-md">
                           {slot.difficulty}
                         </span>
                       </div>
-                      <h4 className="text-xl font-bold text-astrian-charcoal font-display">
+                      <h4 className="text-xl font-bold text-astrian-charcoal dark:text-gray-100 font-display">
                         {slot.className}
                       </h4>
                     </div>
@@ -228,13 +228,13 @@ export default function SchedulePage() {
                     {/* Instructor & CTA */}
                     <div className="flex items-center justify-between md:justify-end gap-8">
                       <div className="flex items-center gap-2">
-                        <div className="h-8 w-8 rounded-full bg-astrian-clay flex items-center justify-center text-astrian-charcoal/60">
+                        <div className="h-8 w-8 rounded-full bg-astrian-clay dark:bg-[#222623] flex items-center justify-center text-astrian-charcoal/60 dark:text-gray-300">
                           <User className="h-4 w-4" />
                         </div>
-                        <span className="text-sm font-medium text-astrian-charcoal/80">{slot.instructor}</span>
+                        <span className="text-sm font-medium text-astrian-charcoal/80 dark:text-gray-200">{slot.instructor}</span>
                       </div>
                       <Link href="/enquiry">
-                        <button className="px-5 py-2.5 rounded-full border border-astrian-sage/30 text-astrian-sage hover:bg-astrian-sage hover:text-white transition-all duration-300 text-sm font-semibold cursor-pointer">
+                        <button className="px-5 py-2.5 rounded-full border border-astrian-sage/30 dark:border-astrian-leaf/30 text-astrian-sage dark:text-astrian-leaf hover:bg-astrian-sage dark:hover:bg-astrian-sage hover:text-white dark:hover:text-white transition-all duration-300 text-sm font-semibold cursor-pointer">
                           Book Space
                         </button>
                       </Link>
@@ -245,7 +245,7 @@ export default function SchedulePage() {
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  className="p-16 text-center text-astrian-charcoal/50 text-base font-light italic"
+                  className="p-16 text-center text-astrian-charcoal/50 dark:text-gray-400 text-base font-light italic"
                 >
                   No classes matching the selected filters on this day.
                 </motion.div>
