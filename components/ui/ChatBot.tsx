@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MessageSquare, X, Send, Sparkles } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 interface Message {
   id: string;
@@ -157,8 +158,13 @@ export function ChatBot() {
             {/* Header */}
             <div className="bg-astrian-cream dark:bg-[#121413] border-b border-astrian-clay dark:border-white/5 px-6 py-4 flex items-center justify-between transition-colors duration-300">
               <div className="flex items-center gap-3">
-                <div className="h-10 w-10 rounded-full bg-astrian-sage/10 text-astrian-sage dark:text-astrian-leaf flex items-center justify-center font-bold">
-                  <Sparkles className="h-5 w-5" />
+                <div className="h-10 w-10 rounded-full overflow-hidden relative border border-astrian-clay dark:border-white/10 bg-white">
+                  <Image
+                    src="/chatbot-avatar.png"
+                    alt="Astrion Guide Avatar"
+                    fill
+                    className="object-contain scale-150 -translate-x-1 translate-y-0.5"
+                  />
                 </div>
                 <div>
                   <h3 className="font-bold text-sm text-astrian-charcoal dark:text-gray-100 font-display">Astrion Guide</h3>
@@ -182,6 +188,24 @@ export function ChatBot() {
               ref={scrollRef}
               className="flex-1 overflow-y-auto p-6 space-y-4 bg-astrian-oat/20 dark:bg-[#1c1f1d] custom-scrollbar"
             >
+              {/* Welcoming Character Illustration */}
+              <div className="p-4 bg-white dark:bg-[#121413] rounded-3xl border border-astrian-clay dark:border-white/5 flex items-center gap-4 shadow-sm transition-colors duration-300">
+                <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-2xl bg-white border border-astrian-clay dark:border-white/5">
+                  <Image
+                    src="/chatbot-avatar.png"
+                    alt="Astrion Guide Welcome"
+                    fill
+                    className="object-contain scale-125 -translate-x-1"
+                  />
+                </div>
+                <div>
+                  <h4 className="font-bold text-sm text-astrian-charcoal dark:text-gray-100 font-display">Marcus</h4>
+                  <p className="text-[11px] text-astrian-charcoal/60 dark:text-gray-400 leading-relaxed font-light mt-0.5">
+                    Your personal yoga guide. Ask me about classes, weekly schedules, guides, or free trial inquiries.
+                  </p>
+                </div>
+              </div>
+
               {messages.map((msg) => (
                 <div
                   key={msg.id}
