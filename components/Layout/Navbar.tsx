@@ -25,11 +25,13 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
+    { label: "About Us", href: "/about" },
     { label: "Classes", href: "/classes" },
     { label: "Schedule", href: "/schedule" },
     { label: "Instructors", href: "/instructors" },
     { label: "Gallery", href: "/gallery" },
     { label: "FAQ", href: "/faq" },
+    { label: "Contact", href: "/contact" },
   ];
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
