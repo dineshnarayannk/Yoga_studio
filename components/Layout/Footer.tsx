@@ -69,10 +69,10 @@ export default function Footer() {
         <div className="md:col-span-5 flex flex-col gap-4">
           <h4 className="text-sm font-bold uppercase tracking-wider text-astrian-sage dark:text-astrian-leaf">Contact & Hours</h4>
           <div className="space-y-3 text-sm text-astrian-charcoal/70 dark:text-gray-300 font-light">
-            <div className="flex items-start gap-2.5">
-              <MapPin className="h-4 w-4 shrink-0 mt-0.5 text-astrian-sage dark:text-astrian-leaf" />
+            <Link href="/contact?map=1" className="flex items-start gap-2.5 hover:text-astrian-sage dark:hover:text-astrian-leaf transition-colors cursor-pointer group">
+              <MapPin className="h-4 w-4 shrink-0 mt-0.5 text-astrian-sage dark:text-astrian-leaf group-hover:scale-110 transition-transform" />
               <span>120 Serenity Lane, Wellness District, CA 90210</span>
-            </div>
+            </Link>
             <div className="flex items-center gap-2.5">
               <Phone className="h-4 w-4 text-astrian-sage dark:text-astrian-leaf" />
               <span>(555) 234-5678</span>

@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
-import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, Clock, Send, CheckCircle2 } from "lucide-react";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Mail, Phone, MapPin, Clock, Send, CheckCircle2, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 
@@ -14,6 +14,16 @@ export default function ContactPage() {
     message: ""
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isMapOpen, setIsMapOpen] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get("map") === "1") {
+        setIsMapOpen(true);
+      }
+    }
+  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -48,15 +58,18 @@ export default function ContactPage() {
               <h2 className="text-2xl font-bold font-display text-astrian-charcoal dark:text-gray-100 mb-6">Studio Concierge</h2>
               
               <div className="space-y-6">
-                <div className="flex items-start gap-4">
-                  <div className="h-10 w-10 shrink-0 rounded-xl bg-astrian-sage/10 text-astrian-sage dark:text-astrian-leaf flex items-center justify-center">
+                <button 
+                  onClick={() => setIsMapOpen(true)}
+                  className="flex items-start gap-4 text-left w-full group cursor-pointer focus:outline-none"
+                >
+                  <div className="h-10 w-10 shrink-0 rounded-xl bg-astrian-sage/10 text-astrian-sage dark:text-astrian-leaf flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
                     <MapPin className="h-5 w-5" />
                   </div>
                   <div>
                     <h4 className="text-sm font-bold uppercase tracking-wider text-astrian-charcoal/40 dark:text-gray-400 mb-1">Our Location</h4>
-                    <p className="text-base text-astrian-charcoal dark:text-gray-200">120 Serenity Lane, Wellness District, CA 90210</p>
+                    <p className="text-base text-astrian-charcoal dark:text-gray-200 group-hover:text-astrian-sage dark:group-hover:text-astrian-leaf transition-colors">120 Serenity Lane, Wellness District, CA 90210</p>
                   </div>
-                </div>
+                </button>
 
                 <div className="flex items-start gap-4">
                   <div className="h-10 w-10 shrink-0 rounded-xl bg-astrian-sage/10 text-astrian-sage dark:text-astrian-leaf flex items-center justify-center">
@@ -92,11 +105,14 @@ export default function ContactPage() {
             </Card>
 
             {/* Maps Placeholder container */}
-            <div className="h-[250px] w-full rounded-[2rem] overflow-hidden border border-astrian-clay dark:border-white/10 relative bg-astrian-cream dark:bg-[#1c1f1d] flex flex-col items-center justify-center text-center p-6 transition-colors duration-300">
-              <MapPin className="h-8 w-8 text-astrian-sage dark:text-astrian-leaf mb-3 animate-bounce" />
+            <div 
+              onClick={() => setIsMapOpen(true)}
+              className="h-[250px] w-full rounded-[2rem] overflow-hidden border border-astrian-clay dark:border-white/10 relative bg-astrian-cream dark:bg-[#1c1f1d] flex flex-col items-center justify-center text-center p-6 transition-all duration-300 cursor-pointer group hover:border-astrian-sage/30 hover:shadow-md"
+            >
+              <MapPin className="h-8 w-8 text-astrian-sage dark:text-astrian-leaf mb-3 animate-bounce group-hover:scale-110 transition-transform" />
               <h3 className="font-bold text-lg text-astrian-charcoal dark:text-gray-100 mb-1">Interactive Studio Map</h3>
               <p className="text-xs text-astrian-charcoal/60 dark:text-gray-400 max-w-xs leading-relaxed">
-                We are situated at the corner of Serenity Lane and Harmony Road, with free onsite parking for all members.
+                Click here to view our location on the interactive studio map view.
               </p>
             </div>
           </div>
@@ -193,6 +209,78 @@ export default function ContactPage() {
         </div>
 
       </div>
+
+      {/* Mini Interactive Map Modal */}
+      <AnimatePresence>
+        {isMapOpen && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsMapOpen(false)}
+              className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+            />
+            
+            {/* Modal Box */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              transition={{ type: "spring", duration: 0.5 }}
+              className="relative w-full max-w-3xl bg-white dark:bg-[#1c1f1d] rounded-[2.5rem] border border-astrian-clay dark:border-white/10 shadow-2xl overflow-hidden z-10 p-4 md:p-6"
+            >
+              {/* Header */}
+              <div className="flex items-center justify-between mb-4 pr-10">
+                <div>
+                  <h3 className="text-xl font-bold font-display text-astrian-charcoal dark:text-gray-100 flex items-center gap-2">
+                    <MapPin className="h-5 w-5 text-astrian-sage" />
+                    Astrion Studio Location
+                  </h3>
+                  <p className="text-xs text-astrian-charcoal/60 dark:text-gray-400 mt-0.5">
+                    120 Serenity Lane, Wellness District, CA 90210
+                  </p>
+                </div>
+                <button
+                  onClick={() => setIsMapOpen(false)}
+                  className="absolute top-6 right-6 h-8 w-8 rounded-full bg-astrian-clay/20 dark:bg-white/5 text-astrian-charcoal dark:text-gray-300 flex items-center justify-center hover:bg-astrian-clay/40 dark:hover:bg-white/10 transition-colors cursor-pointer"
+                  aria-label="Close modal"
+                >
+                  <X className="h-4 w-4" />
+                </button>
+              </div>
+
+              {/* Map Iframe */}
+              <div className="relative w-full aspect-video rounded-2xl overflow-hidden border border-astrian-clay dark:border-white/5 bg-astrian-cream dark:bg-[#121413]">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3305.733248356957!2d-118.41173252441019!3d34.05073007315668!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2bb20d6f466b7%3A0xe104db6624bf3692!2sWellness%20District!5e0!3m2!1sen!2sus!4v1710000000000!5m2!1sen!2sus"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="dark:invert dark:opacity-85 dark:grayscale"
+                />
+              </div>
+
+              {/* Footer Info */}
+              <div className="mt-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 text-xs text-astrian-charcoal/60 dark:text-gray-400">
+                <span>Free parking available behind the building.</span>
+                <a
+                  href="https://maps.google.com/?q=Wellness+District,+CA+90210"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-astrian-sage dark:text-astrian-leaf font-bold hover:underline"
+                >
+                  Open in Google Maps →
+                </a>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
