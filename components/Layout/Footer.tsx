@@ -41,9 +41,6 @@ export default function Footer() {
         <div className="md:col-span-3 flex flex-col gap-4">
           <h4 className="text-sm font-bold uppercase tracking-wider text-astrian-sage dark:text-astrian-leaf">Explore</h4>
           <nav className="flex flex-col gap-2.5 text-sm font-medium">
-            <Link href="/about" className="text-astrian-charcoal/70 dark:text-gray-300 hover:text-astrian-sage dark:hover:text-astrian-leaf transition-colors">
-              About Us
-            </Link>
             <Link href="/classes" className="text-astrian-charcoal/70 dark:text-gray-300 hover:text-astrian-sage dark:hover:text-astrian-leaf transition-colors">
               Classes
             </Link>
@@ -58,6 +55,9 @@ export default function Footer() {
             </Link>
             <Link href="/faq" className="text-astrian-charcoal/70 dark:text-gray-300 hover:text-astrian-sage dark:hover:text-astrian-leaf transition-colors">
               FAQ
+            </Link>
+            <Link href="/about" className="text-astrian-charcoal/70 dark:text-gray-300 hover:text-astrian-sage dark:hover:text-astrian-leaf transition-colors">
+              About Us
             </Link>
             <Link href="/contact" className="text-astrian-charcoal/70 dark:text-gray-300 hover:text-astrian-sage dark:hover:text-astrian-leaf transition-colors">
               Contact
