@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Outfit, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
+import Navbar from "@/components/Layout/Navbar";
+import Footer from "@/components/Layout/Footer";
 
 const outfit = Outfit({
   variable: "--font-outfit",
@@ -37,8 +39,13 @@ export default function RootLayout({
       className={`${outfit.variable} ${plusJakartaSans.variable} scroll-smooth antialiased`}
     >
       <body className="bg-astrian-oat text-astrian-charcoal min-h-screen flex flex-col font-sans overflow-x-hidden selection:bg-astrian-sage selection:text-white">
-        {children}
+        <Navbar />
+        <div className="flex-grow">
+          {children}
+        </div>
+        <Footer />
       </body>
     </html>
   );
 }
+

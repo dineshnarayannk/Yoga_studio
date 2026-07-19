@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Star } from "lucide-react";
@@ -26,12 +27,7 @@ export default function Hero() {
     },
   };
 
-  const scrollToSection = (id: string) => {
-    const element = document.querySelector(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
+
 
   return (
     <section className="relative min-h-[90vh] pt-32 pb-20 flex items-center overflow-hidden bg-astrian-oat">
@@ -78,21 +74,23 @@ export default function Hero() {
             variants={itemVariants}
             className="flex flex-wrap gap-4 items-center mb-10"
           >
-            <Button
-              variant="primary"
-              size="lg"
-              onClick={() => scrollToSection("#schedule")}
-              className="flex items-center gap-2"
-            >
-              View Schedule <ArrowRight className="h-4.5 w-4.5" />
-            </Button>
-            <Button
-              variant="secondary"
-              size="lg"
-              onClick={() => scrollToSection("#gallery")}
-            >
-              Explore Classes
-            </Button>
+            <Link href="/schedule">
+              <Button
+                variant="primary"
+                size="lg"
+                className="flex items-center gap-2"
+              >
+                View Schedule <ArrowRight className="h-4.5 w-4.5" />
+              </Button>
+            </Link>
+            <Link href="/classes">
+              <Button
+                variant="secondary"
+                size="lg"
+              >
+                Explore Classes
+              </Button>
+            </Link>
           </motion.div>
 
           {/* Social Proof Stack */}

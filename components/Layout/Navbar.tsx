@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import { Menu, X, Sparkles } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
@@ -11,7 +12,7 @@ export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
+    const handleScroll = () => {  
       if (window.scrollY > 20) {
         setIsScrolled(true);
       } else {
@@ -23,18 +24,32 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { label: "Classes", href: "#classes" },
-    { label: "Schedule", href: "#schedule" },
-    { label: "Instructors", href: "#instructors" },
-    { label: "Gallery", href: "#gallery" },
-    { label: "FAQ", href: "#faq" },
+    { label: "Classes", href: "/classes" },
+    { label: "Schedule", href: "/schedule" },
+    { label: "Instructors", href: "/instructors" },
+    { label: "Gallery", href: "/gallery" },
+    { label: "FAQ", href: "/faq" },
   ];
 
-  const handleLinkClick = (href: string) => {
+  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     setIsMobileMenuOpen(false);
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+    
+    if (href.startsWith("/#") || href.startsWith("#")) {
+      const id = href.replace(/^\/#?/, "#");
+      const element = document.querySelector(id);
+      if (element) {
+        e.preventDefault();
+        const offset = 80; // height of the navbar
+        const bodyRect = document.body.getBoundingClientRect().top;
+        const elementRect = element.getBoundingClientRect().top;
+        const elementPosition = elementRect - bodyRect;
+        const offsetPosition = elementPosition - offset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth"
+        });
+      }
     }
   };
 
@@ -50,11 +65,13 @@ export default function Navbar() {
       >
         <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
           {/* Logo */}
-          <a
-            href="#"
+          <Link
+            href="/"
             onClick={(e) => {
-              e.preventDefault();
-              window.scrollTo({ top: 0, behavior: "smooth" });
+              if (window.location.pathname === "/") {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }
             }}
             className="flex items-center gap-2 text-xl font-bold font-display tracking-tight text-astrian-charcoal cursor-pointer"
           >
@@ -62,37 +79,34 @@ export default function Navbar() {
               <Sparkles className="h-4.5 w-4.5" />
             </div>
             <span>Astrion</span>
-          </a>
+          </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.label}
                 href={link.href}
                 onClick={(e) => {
-                  e.preventDefault();
-                  handleLinkClick(link.href);
+                  handleLinkClick(e, link.href);
                 }}
                 className="text-[0.95rem] font-medium text-astrian-charcoal/80 hover:text-astrian-sage transition-colors duration-300"
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
           </nav>
 
           {/* Action Button */}
           <div className="hidden md:block">
-            <Button
-              variant="primary"
-              size="sm"
-              onClick={() => {
-                const target = document.querySelector("#trial-form");
-                if (target) target.scrollIntoView({ behavior: "smooth" });
-              }}
-            >
-              Get A Free Trial
-            </Button>
+            <Link href="/enquiry">
+              <Button
+                variant="primary"
+                size="sm"
+              >
+                Get A Free Trial
+              </Button>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -118,32 +132,28 @@ export default function Navbar() {
           >
             <div className="flex flex-col gap-6">
               {navLinks.map((link) => (
-                <a
+                <Link
                   key={link.label}
                   href={link.href}
                   onClick={(e) => {
-                    e.preventDefault();
-                    handleLinkClick(link.href);
+                    handleLinkClick(e, link.href);
                   }}
                   className="text-2xl font-medium text-astrian-charcoal hover:text-astrian-sage transition-colors duration-300"
                 >
                   {link.label}
-                </a>
+                </Link>
               ))}
             </div>
             <div className="flex flex-col gap-4">
-              <Button
-                variant="primary"
-                size="lg"
-                className="w-full"
-                onClick={() => {
-                  setIsMobileMenuOpen(false);
-                  const target = document.querySelector("#trial-form");
-                  if (target) target.scrollIntoView({ behavior: "smooth" });
-                }}
-              >
-                Get A Free Trial
-              </Button>
+              <Link href="/enquiry" className="w-full" onClick={() => setIsMobileMenuOpen(false)}>
+                <Button
+                  variant="primary"
+                  size="lg"
+                  className="w-full"
+                >
+                  Get A Free Trial
+                </Button>
+              </Link>
             </div>
           </motion.div>
         )}
@@ -151,3 +161,5 @@ export default function Navbar() {
     </>
   );
 }
+
+
