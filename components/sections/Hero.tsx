@@ -108,23 +108,24 @@ export default function Hero() {
 
 
   return (
-    <section className="relative min-h-[90vh] pt-32 pb-20 flex items-center overflow-hidden bg-astrian-oat dark:bg-[#121413] transition-colors duration-300">
-      {/* Background Studio Image Layer */}
-      <div className="absolute inset-0 -z-10 overflow-hidden">
-        <Image
-          src="/hero-bg.jpg"
-          alt="Studio Interior Background"
-          fill
-          priority
-          className="object-cover object-center"
-        />
-        {/* Elegant overlay allowing full image visibility while keeping text crisp */}
-        <div className="absolute inset-0 bg-[#FDFBF7]/30 dark:bg-[#121413]/55 transition-colors duration-300" />
-      </div>
+    <section className="relative min-h-[92vh] pt-36 pb-20 flex items-center overflow-hidden bg-[#F4F8F2] dark:bg-[#0F1611] transition-colors duration-300">
+      {/* Layered Nature Ambient Lighting & Floating Botanical Shapes */}
+      <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
+        {/* Soft Radial Botanical Lights */}
+        <div className="absolute top-[-10%] right-[-5%] w-[650px] h-[650px] rounded-full bg-radial from-[#8DA97B]/20 via-[#C9D7C3]/10 to-transparent blur-3xl opacity-80 animate-pulse-slow" />
+        <div className="absolute bottom-[-15%] left-[-10%] w-[500px] h-[500px] rounded-full bg-radial from-[#5D7555]/15 via-[#AFC4A3]/10 to-transparent blur-3xl opacity-70" />
+        
+        {/* Warm Sunlight Ambient Glow */}
+        <div className="absolute top-[10%] left-[25%] w-[350px] h-[350px] rounded-full bg-radial from-[#F8F7F2]/60 to-transparent blur-2xl opacity-90" />
 
-      {/* Background organic shape */}
-      <div className="absolute top-[-20%] right-[-10%] w-[600px] h-[600px] rounded-full bg-astrian-cream dark:bg-[#1c1f1d]/20 blur-3xl -z-10 opacity-70" />
-      <div className="absolute bottom-[-10%] left-[-10%] w-[400px] h-[400px] rounded-full bg-astrian-clay/40 dark:bg-astrian-sage/5 blur-3xl -z-10 opacity-60" />
+        {/* Abstract Leaf SVG Silhouettes */}
+        <svg className="absolute top-12 right-12 opacity-15 dark:opacity-10 text-[#5D7555] w-72 h-72 animate-float" viewBox="0 0 100 100" fill="currentColor">
+          <path d="M50 0 C60 30, 90 40, 100 50 C70 60, 60 90, 50 100 C40 70, 10 60, 0 50 C30 40, 40 10, 50 0 Z" />
+        </svg>
+        <svg className="absolute bottom-12 left-8 opacity-10 text-[#2D4632] w-56 h-56 animate-float" style={{ animationDelay: '3s' }} viewBox="0 0 100 100" fill="currentColor">
+          <path d="M50 10 C70 20, 80 50, 90 90 C50 80, 20 70, 10 50 C20 30, 30 20, 50 10 Z" />
+        </svg>
+      </div>
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
         {/* Left Column: Text & Content */}
@@ -132,15 +133,17 @@ export default function Hero() {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="lg:col-span-7 flex flex-col items-start text-left"
+          className="lg:col-span-7 flex flex-col items-start text-left z-10"
         >
           {/* Accent Pill */}
           <motion.div
             variants={itemVariants}
-            className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-astrian-sage/10 dark:bg-astrian-sage/20 text-astrian-sage dark:text-astrian-leaf text-sm font-semibold mb-6 tracking-wide"
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#EEF5EA] dark:bg-[#162019] border border-[#C9D7C3]/60 dark:border-[#8DA97B]/30 text-[#2D4632] dark:text-[#C9D7C3] text-xs font-semibold mb-6 tracking-wide shadow-sm"
           >
-            <span className="w-1.5 h-1.5 rounded-full bg-astrian-sage dark:bg-astrian-leaf animate-pulse" />
-            Serene Studio in the Heart of the Community
+            <span className="w-2 h-2 rounded-full bg-[#8DA97B] animate-ping" />
+            <span className="font-semibold text-[#2D4632] dark:text-[#8DA97B]">Astrion Sanctuary</span>
+            <span className="text-[#7A867F]">•</span>
+            <span>AI-Powered Personal Yoga & Mindfulness</span>
           </motion.div>
 
           {/* Auto-typing Headline */}
@@ -151,9 +154,9 @@ export default function Hero() {
           {/* Description */}
           <motion.p
             variants={itemVariants}
-            className="text-lg md:text-xl text-astrian-charcoal/70 dark:text-gray-300 mb-8 max-w-xl leading-relaxed text-pretty font-light"
+            className="text-lg md:text-xl text-[#52625A] dark:text-[#C9D7C3] mb-9 max-w-xl leading-relaxed text-pretty font-light"
           >
-            Find your balance, strength, and inner peace in our light-filled, serene community space. Whether you are stepping onto the mat for the first time or deepening your practice, our expert-led classes will guide your journey.
+            Step into a serene digital sanctuary where artificial intelligence meets ancient mindfulness. Personal guided practice tailored dynamically to your body, energy, and breath.
           </motion.p>
 
           {/* Action CTAs */}
@@ -165,17 +168,18 @@ export default function Hero() {
               <Button
                 variant="primary"
                 size="lg"
-                className="flex items-center gap-2"
+                className="flex items-center gap-2 bg.gradient-to-r from-[#2D4632] to-[#5D7555] bg-[#2D4632] hover:bg-[#1F2E23] text-white rounded-full px-7 py-3.5 text-sm font-semibold shadow-xl shadow-[#2D4632]/20 hover:scale-[1.02] transition-all duration-300"
               >
-                View Schedule <ArrowRight className="h-4.5 w-4.5" />
+                Explore Sessions <ArrowRight className="h-4 w-4 ml-1" />
               </Button>
             </Link>
             <Link href="/classes">
               <Button
                 variant="secondary"
                 size="lg"
+                className="bg-[#F8FBF6]/90 dark:bg-[#162019]/90 backdrop-blur-md border border-[#C9D7C3]/70 dark:border-[#8DA97B]/30 text-[#2D4632] dark:text-[#F4F8F2] hover:bg-[#EEF5EA] dark:hover:bg-[#1F2E23] rounded-full px-7 py-3.5 text-sm font-semibold shadow-sm transition-all duration-300"
               >
-                Explore Classes
+                View Practices
               </Button>
             </Link>
           </motion.div>
@@ -183,10 +187,10 @@ export default function Hero() {
           {/* Social Proof Stack */}
           <motion.div
             variants={itemVariants}
-            className="flex flex-wrap items-center gap-4 border-t border-astrian-clay/70 pt-8 w-full"
+            className="flex flex-wrap items-center gap-4 border-t border-[#C9D7C3]/50 dark:border-[#8DA97B]/20 pt-8 w-full"
           >
             <div className="flex -space-x-3">
-              <div className="h-10 w-10 rounded-full border-2 border-astrian-oat overflow-hidden bg-astrian-clay relative">
+              <div className="h-10 w-10 rounded-full border-2 border-[#F4F8F2] dark:border-[#0F1611] overflow-hidden bg-[#EEF5EA] relative shadow-sm">
                 <Image
                   src="/instructor-1.png"
                   alt="Member Avatar"
@@ -194,7 +198,7 @@ export default function Hero() {
                   className="object-cover"
                 />
               </div>
-              <div className="h-10 w-10 rounded-full border-2 border-astrian-oat overflow-hidden bg-astrian-clay relative">
+              <div className="h-10 w-10 rounded-full border-2 border-[#F4F8F2] dark:border-[#0F1611] overflow-hidden bg-[#EEF5EA] relative shadow-sm">
                 <Image
                   src="/instructor-2.png"
                   alt="Member Avatar"
@@ -202,7 +206,7 @@ export default function Hero() {
                   className="object-cover"
                 />
               </div>
-              <div className="h-10 w-10 rounded-full border-2 border-2 border-astrian-oat overflow-hidden bg-astrian-clay relative">
+              <div className="h-10 w-10 rounded-full border-2 border-[#F4F8F2] dark:border-[#0F1611] overflow-hidden bg-[#EEF5EA] relative shadow-sm">
                 <Image
                   src="/instructor-3.png"
                   alt="Member Avatar"
@@ -212,14 +216,14 @@ export default function Hero() {
               </div>
             </div>
             <div className="flex flex-col items-start">
-              <div className="flex items-center gap-0.5 text-amber-500">
+              <div className="flex items-center gap-1 text-[#5D7555] dark:text-[#8DA97B]">
                 {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="h-4 w-4 fill-amber-500 text-amber-500" />
+                  <Star key={i} className="h-4 w-4 fill-[#5D7555] dark:fill-[#8DA97B] text-[#5D7555] dark:text-[#8DA97B]" />
                 ))}
-                <span className="text-sm font-semibold text-astrian-charcoal dark:text-gray-100 ml-1.5">4.9 / 5.0</span>
+                <span className="text-xs font-bold text-[#233228] dark:text-[#F4F8F2] ml-1.5">4.9 / 5.0 Rating</span>
               </div>
-              <p className="text-sm text-astrian-charcoal/60 dark:text-gray-400 mt-0.5">
-                Join over <span className="font-semibold text-astrian-charcoal dark:text-gray-200">400+ active members</span> this week.
+              <p className="text-xs text-[#52625A] dark:text-[#C9D7C3] mt-0.5">
+                Join over <span className="font-semibold text-[#2D4632] dark:text-white">1,200+ mindful practitioners</span> worldwide.
               </p>
             </div>
           </motion.div>
@@ -233,29 +237,30 @@ export default function Hero() {
           className="lg:col-span-5 relative flex justify-center items-center w-full"
         >
           {/* Framed Image Container */}
-          <div className="relative w-full max-w-[420px] aspect-[4/5] rounded-[3rem] overflow-hidden border-[12px] border-white dark:border-[#1c1f1d] shadow-[0_24px_50px_rgba(17,24,39,0.06)] bg-astrian-cream dark:bg-[#1c1f1d] transition-colors duration-300">
+          <div className="relative w-full max-w-[420px] aspect-[4/5] rounded-[2.5rem] overflow-hidden border-4 border-[#C9D7C3]/60 dark:border-[#8DA97B]/30 shadow-2xl shadow-[#2D4632]/12 bg-[#F8FBF6] dark:bg-[#162019] transition-all duration-300">
             <Image
               src="/yoga-pose-hero.png"
-              alt="Serene Yoga Pose"
+              alt="Serene AI Guided Yoga Sanctuary"
               fill
               className="object-cover object-center transform hover:scale-105 transition-transform duration-700"
               priority
             />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#2D4632]/40 via-transparent to-transparent pointer-events-none" />
           </div>
 
-          {/* Floating badge */}
+          {/* Floating Philosophy badge */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8, type: "spring" }}
-            className="absolute bottom-6 left-[-10px] sm:left-4 glass-panel py-3 px-5 rounded-2xl flex items-center gap-3 shadow-md"
+            className="absolute bottom-6 left-[-10px] sm:left-4 glass-card-luxury py-3.5 px-5 rounded-2xl flex items-center gap-3.5 shadow-xl border border-[#C9D7C3]/80 dark:border-[#8DA97B]/30"
           >
-            <div className="h-10 w-10 rounded-full bg-astrian-sage/10 dark:bg-astrian-sage/20 flex items-center justify-center text-astrian-sage dark:text-astrian-leaf font-bold">
+            <div className="h-10 w-10 rounded-full bg-gradient-to-tr from-[#2D4632] to-[#5D7555] flex items-center justify-center text-[#F8F7F2] font-bold text-lg shadow-sm">
               ॐ
             </div>
             <div>
-              <p className="text-xs text-astrian-charcoal/50 dark:text-gray-400 uppercase tracking-wider font-semibold">Our Philosophy</p>
-              <p className="text-sm font-medium text-astrian-charcoal dark:text-gray-200">Mind-Body Unity</p>
+              <p className="text-[10px] text-[#7A867F] dark:text-[#C9D7C3] uppercase tracking-wider font-bold">Nature AI Balance</p>
+              <p className="text-xs font-semibold text-[#233228] dark:text-white">Mind-Body AI Studio</p>
             </div>
           </motion.div>
         </motion.div>

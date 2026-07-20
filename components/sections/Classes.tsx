@@ -50,22 +50,22 @@ export default function Classes() {
   };
 
   return (
-    <section id="classes" className="py-24 bg-astrian-cream dark:bg-[#1c1f1d] relative overflow-hidden transition-colors duration-300">
-      {/* Background decoration */}
-      <div className="absolute top-[-10%] left-[-10%] w-[300px] h-[300px] rounded-full bg-astrian-clay blur-3xl -z-10 opacity-50" />
-      <div className="absolute bottom-[-10%] right-[-10%] w-[450px] h-[450px] rounded-full bg-astrian-sage/5 blur-3xl -z-10 opacity-50" />
+    <section id="classes" className="py-28 bg-[#EEF5EA] dark:bg-[#162019] relative overflow-hidden transition-colors duration-300">
+      {/* Background radial glow */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-radial from-[#8DA97B]/15 to-transparent blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-radial from-[#5D7555]/10 to-transparent blur-3xl pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="text-sm font-semibold tracking-wider text-astrian-sage dark:text-astrian-leaf uppercase bg-astrian-sage/10 dark:bg-astrian-sage/20 px-4 py-1.5 rounded-full inline-block mb-4">
-            Our Offerings
+          <span className="text-xs font-bold tracking-widest text-[#2D4632] dark:text-[#8DA97B] uppercase bg-[#C9D7C3]/40 dark:bg-[#8DA97B]/20 px-4 py-1.5 rounded-full inline-block mb-4 shadow-sm">
+            Curated Practices
           </span>
-          <h2 className="text-4xl md:text-5xl font-bold text-astrian-charcoal dark:text-gray-100 mb-4">
-            Curated Classes for Your Journey
+          <h2 className="text-4xl md:text-5xl font-bold text-[#233228] dark:text-[#F4F8F2] mb-4">
+            Customized for Your Flow
           </h2>
-          <p className="text-lg text-astrian-charcoal/70 dark:text-gray-300 font-light leading-relaxed">
-            Whether you seek a high-energy practice or quiet restoration, find the perfect class tailored to your mind and body.
+          <p className="text-lg text-[#52625A] dark:text-[#C9D7C3] font-light leading-relaxed">
+            Whether seeking dynamic vitality or quiet mindfulness, explore AI-tailored and expert-guided practices designed for your inner balance.
           </p>
         </div>
 
@@ -79,35 +79,33 @@ export default function Classes() {
         >
           {classesList.map((item, index) => (
             <motion.div key={index} variants={itemVariants}>
-              <Card className="h-full flex flex-col justify-between hover:border-astrian-sage/30 transition-all duration-300">
+              <div className="glass-card-luxury h-full p-8 rounded-[2rem] flex flex-col justify-between border border-[#C9D7C3]/60 dark:border-[#8DA97B]/25 bg-[#F8FBF6]/90 dark:bg-[#0F1611]/80 shadow-lg shadow-[#2D4632]/4">
                 <div>
                   <div className="flex items-center justify-between mb-6">
-                    <div className="h-12 w-12 rounded-2xl bg-astrian-cream dark:bg-[#1c1f1d] border border-astrian-clay/80 dark:border-white/10 flex items-center justify-center">
+                    <div className="h-12 w-12 rounded-2xl bg-gradient-to-br from-[#2D4632] to-[#5D7555] flex items-center justify-center text-[#F8F7F2] shadow-md">
                       {item.icon}
                     </div>
-                    <span className="text-xs font-semibold uppercase tracking-wider text-astrian-sage dark:text-astrian-leaf bg-astrian-sage/10 dark:bg-astrian-sage/20 px-3 py-1 rounded-full">
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-[#2D4632] dark:text-[#8DA97B] bg-[#EEF5EA] dark:bg-[#162019] border border-[#C9D7C3]/60 dark:border-[#8DA97B]/30 px-3.5 py-1 rounded-full">
                       {item.tag}
                     </span>
                   </div>
-                  <h3 className="text-2xl font-bold text-astrian-charcoal dark:text-gray-100 mb-2 font-display">
+                  <h3 className="text-2xl font-bold text-[#233228] dark:text-[#F4F8F2] mb-2 font-display">
                     {item.title}
                   </h3>
-                  <div className="flex gap-4 text-sm text-astrian-charcoal/60 dark:text-gray-400 mb-4 font-medium">
+                  <div className="flex gap-3 text-xs font-semibold text-[#7A867F] dark:text-[#C9D7C3] mb-4">
                     <span>{item.level}</span>
                     <span>•</span>
                     <span>{item.duration}</span>
                   </div>
-                  <p className="text-astrian-charcoal/70 dark:text-gray-300 leading-relaxed font-light">
+                  <p className="text-[#52625A] dark:text-[#C9D7C3] leading-relaxed font-light text-sm">
                     {item.description}
                   </p>
                 </div>
-                <div className="mt-8 pt-6 border-t border-astrian-clay/50 dark:border-white/5 flex justify-between items-center">
-                  <span className="text-sm font-semibold text-astrian-charcoal/80 dark:text-gray-200">Book class</span>
-                  <div className="h-8 w-8 rounded-full border border-astrian-clay dark:border-white/10 text-astrian-charcoal dark:text-gray-300 flex items-center justify-center hover:bg-astrian-sage hover:text-white hover:border-astrian-sage transition-all duration-300 cursor-pointer">
-                    →
-                  </div>
+                <div className="pt-6 mt-6 border-t border-[#C9D7C3]/40 dark:border-[#8DA97B]/20 flex justify-between items-center text-xs font-bold text-[#2D4632] dark:text-[#8DA97B]">
+                  <span>AI Guided Posture Sync</span>
+                  <span className="h-2 w-2 rounded-full bg-[#8DA97B] animate-pulse" />
                 </div>
-              </Card>
+              </div>
             </motion.div>
           ))}
         </motion.div>

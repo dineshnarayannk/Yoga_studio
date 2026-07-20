@@ -23,35 +23,35 @@ export default function EnquiryForm() {
   };
 
   return (
-    <section id="enquiry-form" className="py-24 bg-astrian-oat dark:bg-[#121413] relative overflow-hidden transition-colors duration-300">
-      <div className="max-w-4xl mx-auto px-6 md:px-12">
-        <div className="bg-white dark:bg-[#1c1f1d] border border-astrian-clay/80 dark:border-white/10 p-8 md:p-16 shadow-[0_24px_60px_rgba(17,24,39,0.04)] relative overflow-hidden grid grid-cols-1 lg:grid-cols-12 gap-12 items-center transition-colors duration-300">
+    <section id="enquiry-form" className="py-28 bg-[#F4F8F2] dark:bg-[#0F1611] relative overflow-hidden transition-colors duration-300">
+      <div className="max-w-4xl mx-auto px-6 md:px-12 relative z-10">
+        <div className="glass-card-luxury bg-[#F8FBF6]/90 dark:bg-[#162019]/85 rounded-[2.8rem] border border-[#C9D7C3]/60 dark:border-[#8DA97B]/25 p-8 md:p-14 shadow-2xl shadow-[#2D4632]/8 relative overflow-hidden grid grid-cols-1 lg:grid-cols-12 gap-12 items-center transition-colors duration-300">
           
           {/* Left info column */}
           <div className="lg:col-span-5 flex flex-col justify-center h-full">
-            <span className="text-sm font-semibold tracking-wider text-astrian-sage dark:text-astrian-leaf uppercase bg-astrian-sage/10 dark:bg-astrian-sage/20 px-4 py-1.5 rounded-full inline-flex items-center gap-1.5 mb-6 self-start">
+            <span className="text-xs font-bold tracking-wider text-[#2D4632] dark:text-[#8DA97B] uppercase bg-[#C9D7C3]/40 dark:bg-[#8DA97B]/20 px-4 py-1.5 rounded-full inline-flex items-center gap-1.5 mb-6 self-start shadow-sm">
               <Sparkles className="h-3.5 w-3.5" />
-              Limited Offer
+              Complimentary Sanctuary Pass
             </span>
-            <h2 className="text-3.5xl md:text-4xl font-bold text-astrian-charcoal dark:text-gray-100 mb-4 leading-tight">
-              Begin Your Journey Today
+            <h2 className="text-3xl md:text-4xl font-bold text-[#233228] dark:text-[#F4F8F2] mb-4 leading-tight">
+              Begin Your AI Wellness Journey
             </h2>
-            <p className="text-base text-astrian-charcoal/70 dark:text-gray-300 leading-relaxed font-light mb-6">
-              Claim your first class completely free. Fill out the form, and our studio team will contact you to book your mat space.
+            <p className="text-sm text-[#52625A] dark:text-[#C9D7C3] leading-relaxed font-light mb-6">
+              Claim your introductory AI studio pass completely free. Fill out the form, and our sanctuary team will reserve your spot.
             </p>
-            <div className="space-y-3 border-t border-astrian-clay dark:border-white/5 pt-6">
-              <p className="text-sm text-astrian-charcoal/60 dark:text-gray-400">✓ Free locker & towel access</p>
-              <p className="text-sm text-astrian-charcoal/60 dark:text-gray-400">✓ Premium Manduka mats provided</p>
-              <p className="text-sm text-astrian-charcoal/60 dark:text-gray-400">✓ Complimentary organic herbal tea</p>
+            <div className="space-y-3 border-t border-[#C9D7C3]/40 dark:border-[#8DA97B]/20 pt-6">
+              <p className="text-xs font-medium text-[#52625A] dark:text-[#C9D7C3]">✓ Full access to Astra AI posture tracking</p>
+              <p className="text-xs font-medium text-[#52625A] dark:text-[#C9D7C3]">✓ Premium Manduka mats provided</p>
+              <p className="text-xs font-medium text-[#52625A] dark:text-[#C9D7C3]">✓ Complimentary organic lavender herbal tea</p>
             </div>
           </div>
 
           {/* Right form column */}
           <div className="lg:col-span-7">
             {!isSubmitted ? (
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-5">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-astrian-charcoal/80 dark:text-gray-200 mb-2">
+                  <label htmlFor="name" className="block text-xs font-bold uppercase tracking-wider text-[#233228] dark:text-[#C9D7C3] mb-2">
                     Full Name
                   </label>
                   <input
@@ -60,14 +60,14 @@ export default function EnquiryForm() {
                     required
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    placeholder="Enter your name"
-                    className="w-full px-5 py-3.5 rounded-2xl border border-astrian-clay dark:border-white/10 focus:border-astrian-sage focus:ring-2 focus:ring-astrian-sage/20 bg-astrian-oat/30 dark:bg-[#121413] transition-all duration-300 outline-none text-astrian-charcoal dark:text-gray-100"
+                    placeholder="Enter your full name"
+                    className="w-full px-5 py-3.5 rounded-2xl border border-[#C9D7C3]/70 dark:border-[#8DA97B]/30 focus:border-[#5D7555] focus:ring-2 focus:ring-[#8DA97B]/20 bg-[#F4F8F2]/70 dark:bg-[#0F1611]/80 transition-all duration-300 outline-none text-[#233228] dark:text-[#F4F8F2] text-sm"
                   />
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-astrian-charcoal/80 dark:text-gray-200 mb-2">
+                    <label htmlFor="email" className="block text-xs font-bold uppercase tracking-wider text-[#233228] dark:text-[#C9D7C3] mb-2">
                       Email Address
                     </label>
                     <input
@@ -77,11 +77,11 @@ export default function EnquiryForm() {
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       placeholder="you@example.com"
-                      className="w-full px-5 py-3.5 rounded-2xl border border-astrian-clay dark:border-white/10 focus:border-astrian-sage focus:ring-2 focus:ring-astrian-sage/20 bg-astrian-oat/30 dark:bg-[#121413] transition-all duration-300 outline-none text-astrian-charcoal dark:text-gray-100"
+                      className="w-full px-5 py-3.5 rounded-2xl border border-[#C9D7C3]/70 dark:border-[#8DA97B]/30 focus:border-[#5D7555] focus:ring-2 focus:ring-[#8DA97B]/20 bg-[#F4F8F2]/70 dark:bg-[#0F1611]/80 transition-all duration-300 outline-none text-[#233228] dark:text-[#F4F8F2] text-sm"
                     />
                   </div>
                   <div>
-                    <label htmlFor="phone" className="block text-sm font-medium text-astrian-charcoal/80 dark:text-gray-200 mb-2">
+                    <label htmlFor="phone" className="block text-xs font-bold uppercase tracking-wider text-[#233228] dark:text-[#C9D7C3] mb-2">
                       Phone Number
                     </label>
                     <input
@@ -91,29 +91,29 @@ export default function EnquiryForm() {
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                       placeholder="(555) 000-0000"
-                      className="w-full px-5 py-3.5 rounded-2xl border border-astrian-clay dark:border-white/10 focus:border-astrian-sage focus:ring-2 focus:ring-astrian-sage/20 bg-astrian-oat/30 dark:bg-[#121413] transition-all duration-300 outline-none text-astrian-charcoal dark:text-gray-100"
+                      className="w-full px-5 py-3.5 rounded-2xl border border-[#C9D7C3]/70 dark:border-[#8DA97B]/30 focus:border-[#5D7555] focus:ring-2 focus:ring-[#8DA97B]/20 bg-[#F4F8F2]/70 dark:bg-[#0F1611]/80 transition-all duration-300 outline-none text-[#233228] dark:text-[#F4F8F2] text-sm"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label htmlFor="classType" className="block text-sm font-medium text-astrian-charcoal/80 dark:text-gray-200 mb-2">
-                    Preferred Class Style
+                  <label htmlFor="classType" className="block text-xs font-bold uppercase tracking-wider text-[#233228] dark:text-[#C9D7C3] mb-2">
+                    Preferred Practice Focus
                   </label>
                   <select
                     id="classType"
                     value={formData.classType}
                     onChange={(e) => setFormData({ ...formData, classType: e.target.value })}
-                    className="w-full px-5 py-3.5 rounded-2xl border border-astrian-clay dark:border-white/10 focus:border-astrian-sage focus:ring-2 focus:ring-astrian-sage/20 bg-astrian-oat/30 dark:bg-[#121413] transition-all duration-300 outline-none text-astrian-charcoal dark:text-gray-100 appearance-none cursor-pointer"
+                    className="w-full px-5 py-3.5 rounded-2xl border border-[#C9D7C3]/70 dark:border-[#8DA97B]/30 focus:border-[#5D7555] focus:ring-2 focus:ring-[#8DA97B]/20 bg-[#F4F8F2]/70 dark:bg-[#0F1611]/80 transition-all duration-300 outline-none text-[#233228] dark:text-[#F4F8F2] text-sm appearance-none cursor-pointer"
                   >
-                    <option value="vinyasa" className="dark:bg-[#121413] dark:text-gray-100">Vinyasa Flow (Dynamic)</option>
-                    <option value="hatha" className="dark:bg-[#121413] dark:text-gray-100">Hatha Harmony (Alignment)</option>
-                    <option value="yin" className="dark:bg-[#121413] dark:text-gray-100">Restorative Yin (Slow/Calm)</option>
+                    <option value="vinyasa" className="dark:bg-[#0F1611]">Vinyasa Flow (Dynamic Energy)</option>
+                    <option value="hatha" className="dark:bg-[#0F1611]">Hatha Harmony (Mindful Alignment)</option>
+                    <option value="yin" className="dark:bg-[#0F1611]">Restorative Yin (Deep Calm)</option>
                   </select>
                 </div>
 
-                <Button type="submit" variant="primary" size="lg" className="w-full mt-2">
-                  Claim Free Trial Class
+                <Button type="submit" variant="primary" size="lg" className="w-full mt-3 bg-[#2D4632] hover:bg-[#1F2E23] text-white rounded-full py-4 text-sm font-semibold shadow-lg shadow-[#2D4632]/20 hover:scale-[1.01] transition-all">
+                  Claim Complimentary Pass
                 </Button>
               </form>
             ) : (
@@ -122,14 +122,14 @@ export default function EnquiryForm() {
                 animate={{ opacity: 1, scale: 1 }}
                 className="text-center py-12 flex flex-col items-center justify-center"
               >
-                <div className="h-16 w-16 rounded-full bg-astrian-sage/10 dark:bg-astrian-sage/20 text-astrian-sage dark:text-astrian-leaf flex items-center justify-center mb-6">
+                <div className="h-16 w-16 rounded-full bg-[#8DA97B]/20 text-[#2D4632] dark:text-[#8DA97B] flex items-center justify-center mb-6">
                   <CheckCircle2 className="h-10 w-10" />
                 </div>
-                <h3 className="text-2xl font-bold text-astrian-charcoal dark:text-gray-100 mb-2 font-display">
-                  Request Received!
+                <h3 className="text-2xl font-bold text-[#233228] dark:text-[#F4F8F2] mb-2 font-display">
+                  Sanctuary Pass Confirmed!
                 </h3>
-                <p className="text-astrian-charcoal/70 dark:text-gray-300 max-w-sm font-light">
-                  Thank you, <span className="font-semibold text-astrian-charcoal dark:text-gray-200">{formData.name}</span>. We've sent a booking confirmation to <span className="font-semibold text-astrian-charcoal dark:text-gray-200">{formData.email}</span>. A guide will call you shortly!
+                <p className="text-[#52625A] dark:text-[#C9D7C3] max-w-sm font-light text-sm">
+                  Thank you, <span className="font-semibold text-[#233228] dark:text-white">{formData.name}</span>. We've emailed your session details to <span className="font-semibold text-[#233228] dark:text-white">{formData.email}</span>.
                 </p>
               </motion.div>
             )}

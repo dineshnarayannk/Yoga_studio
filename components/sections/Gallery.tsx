@@ -12,18 +12,18 @@ export default function Gallery() {
   ];
 
   return (
-    <section id="gallery" className="py-24 bg-astrian-oat dark:bg-[#121413] relative overflow-hidden transition-colors duration-300">
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
+    <section id="gallery" className="py-28 bg-[#F4F8F2] dark:bg-[#0F1611] relative overflow-hidden transition-colors duration-300">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="text-sm font-semibold tracking-wider text-astrian-sage dark:text-astrian-leaf uppercase bg-astrian-sage/10 dark:bg-astrian-sage/20 px-4 py-1.5 rounded-full inline-block mb-4">
-            Studio Tour
+          <span className="text-xs font-bold tracking-widest text-[#2D4632] dark:text-[#8DA97B] uppercase bg-[#C9D7C3]/40 dark:bg-[#8DA97B]/20 px-4 py-1.5 rounded-full inline-block mb-4 shadow-sm">
+            Sanctuary Atmosphere
           </span>
-          <h2 className="text-4xl md:text-5xl font-bold text-astrian-charcoal dark:text-gray-100 mb-4">
-            Our Sacred Space
+          <h2 className="text-4xl md:text-5xl font-bold text-[#233228] dark:text-[#F4F8F2] mb-4">
+            Our Sacred Nature Space
           </h2>
-          <p className="text-lg text-astrian-charcoal/70 dark:text-gray-300 font-light leading-relaxed">
-            Welcome to a light-filled sanctuary designed with raw wood, linen, and earth tones to calm your senses the moment you enter.
+          <p className="text-lg text-[#52625A] dark:text-[#C9D7C3] font-light leading-relaxed">
+            Architected with natural textures, botanical foliage, and ambient sunlight to soothe your nervous system from the moment you arrive.
           </p>
         </div>
 
@@ -36,7 +36,7 @@ export default function Gallery() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1, duration: 0.5 }}
-              className={`relative overflow-hidden rounded-[2rem] border-4 border-white dark:border-[#1c1f1d] shadow-sm bg-astrian-clay/30 dark:bg-[#1c1f1d]/50 group ${img.span}`}
+              className={`relative overflow-hidden rounded-[2.2rem] border-4 border-[#C9D7C3]/60 dark:border-[#8DA97B]/25 shadow-xl shadow-[#2D4632]/5 bg-[#EEF5EA] dark:bg-[#162019] group ${img.span}`}
             >
               <Image
                 src={img.src}
@@ -45,8 +45,8 @@ export default function Gallery() {
                 className="object-cover object-center group-hover:scale-105 transition-transform duration-700"
               />
               {/* Overlay on Hover */}
-              <div className="absolute inset-0 bg-gradient-to-t from-astrian-charcoal/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                <span className="text-white text-lg font-medium font-display">{img.alt}</span>
+              <div className="absolute inset-0 bg-gradient-to-t from-[#2D4632]/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                <span className="text-[#F8F7F2] text-lg font-semibold font-display">{img.alt}</span>
               </div>
             </motion.div>
           ))}

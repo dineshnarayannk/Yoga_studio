@@ -39,18 +39,18 @@ export default function Instructors() {
   ];
 
   return (
-    <section id="instructors" className="py-24 bg-astrian-cream dark:bg-[#1c1f1d] relative overflow-hidden transition-colors duration-300">
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
+    <section id="instructors" className="py-28 bg-[#EEF5EA] dark:bg-[#162019] relative overflow-hidden transition-colors duration-300">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="text-sm font-semibold tracking-wider text-astrian-sage dark:text-astrian-leaf uppercase bg-astrian-sage/10 dark:bg-astrian-sage/20 px-4 py-1.5 rounded-full inline-block mb-4">
-            Expert Guides
+          <span className="text-xs font-bold tracking-widest text-[#2D4632] dark:text-[#8DA97B] uppercase bg-[#C9D7C3]/40 dark:bg-[#8DA97B]/20 px-4 py-1.5 rounded-full inline-block mb-4 shadow-sm">
+            Master Guides & AI Mentors
           </span>
-          <h2 className="text-4xl md:text-5xl font-bold text-astrian-charcoal dark:text-gray-100 mb-4">
-            Meet Our Instructors
+          <h2 className="text-4xl md:text-5xl font-bold text-[#233228] dark:text-[#F4F8F2] mb-4">
+            Wisdom Meets AI Innovation
           </h2>
-          <p className="text-lg text-astrian-charcoal/70 dark:text-gray-300 font-light leading-relaxed">
-            Our certified guides bring diverse training backgrounds, deep wisdom, and welcoming hearts to every class on the mat.
+          <p className="text-lg text-[#52625A] dark:text-[#C9D7C3] font-light leading-relaxed">
+            Our certified yogis collaborate with Astrion AI algorithms to design personalized routines tailored for your growth.
           </p>
         </div>
 
@@ -64,38 +64,39 @@ export default function Instructors() {
               viewport={{ once: true }}
               transition={{ delay: index * 0.1, duration: 0.6 }}
             >
-              <Card className="overflow-hidden p-0 h-full flex flex-col hover:border-astrian-sage/20 transition-all duration-300 group">
+              <div className="glass-card-luxury overflow-hidden h-full flex flex-col rounded-[2.2rem] border border-[#C9D7C3]/60 dark:border-[#8DA97B]/25 bg-[#F8FBF6]/90 dark:bg-[#0F1611]/85 shadow-lg shadow-[#2D4632]/4 group">
                 {/* Image Wrapper */}
-                <div className="relative w-full aspect-[4/5] bg-astrian-clay dark:bg-[#222623] transition-colors duration-300">
+                <div className="relative w-full aspect-[4/5] bg-[#EEF5EA] dark:bg-[#162019] overflow-hidden">
                   <Image
                     src={member.image}
                     alt={member.name}
                     fill
-                    className="object-cover group-hover:scale-102 transition-transform duration-500"
+                    className="object-cover group-hover:scale-105 transition-transform duration-700"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#2D4632]/40 via-transparent to-transparent opacity-60" />
                 </div>
                 {/* Info Wrapper */}
                 <div className="p-6 flex flex-col justify-between flex-grow">
                   <div>
-                    <span className="text-xs font-semibold uppercase tracking-wider text-astrian-sage dark:text-astrian-leaf">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-[#2D4632] dark:text-[#8DA97B]">
                       {member.role}
                     </span>
-                    <h3 className="text-xl font-bold text-astrian-charcoal dark:text-gray-100 mt-1 mb-2 font-display">
+                    <h3 className="text-xl font-bold text-[#233228] dark:text-[#F4F8F2] mt-1 mb-2 font-display">
                       {member.name}
                     </h3>
-                    <p className="text-astrian-charcoal/70 dark:text-gray-300 leading-relaxed font-light text-sm mb-6">
+                    <p className="text-[#52625A] dark:text-[#C9D7C3] leading-relaxed font-light text-xs mb-6">
                       {member.bio}
                     </p>
                   </div>
                   <Link 
                     href={`/instructors/${member.id}`} 
-                    className="inline-flex items-center gap-1.5 text-sm font-semibold text-astrian-sage hover:text-astrian-moss dark:text-astrian-leaf dark:hover:text-white transition-colors cursor-pointer"
+                    className="inline-flex items-center gap-1.5 text-xs font-bold text-[#2D4632] dark:text-[#8DA97B] hover:text-[#5D7555] dark:hover:text-white transition-colors cursor-pointer"
                   >
-                    <span>View Profile</span>
-                    <ArrowRight className="h-4 w-4" />
+                    <span>Explore Profile</span>
+                    <ArrowRight className="h-3.5 w-3.5" />
                   </Link>
                 </div>
-              </Card>
+              </div>
             </motion.div>
           ))}
         </div>

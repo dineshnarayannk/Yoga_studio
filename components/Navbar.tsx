@@ -69,14 +69,17 @@ export default function Navbar() {
     <>
       <header
         className={cn(
-          "fixed top-0 left-0 right-0 z-50 transition-all duration-500 py-4",
-          isScrolled
-            ? "glass-panel shadow-[0_4px_30px_rgba(17,24,39,0.03)] py-3"
-            : "bg-transparent"
+          "fixed top-3 left-0 right-0 z-50 transition-all duration-500 px-4 md:px-8 max-w-7xl mx-auto"
         )}
       >
-        <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
-          
+        <div
+          className={cn(
+            "w-full rounded-full transition-all duration-500 px-5 md:px-7 py-3 flex items-center justify-between",
+            isScrolled
+              ? "bg-[#F4F8F2]/90 dark:bg-[#0F1611]/90 backdrop-blur-xl border border-[#C9D7C3]/60 dark:border-[#8DA97B]/25 shadow-xl shadow-[#2D4632]/8"
+              : "bg-[#F4F8F2]/75 dark:bg-[#0F1611]/75 backdrop-blur-md border border-[#C9D7C3]/40 dark:border-[#8DA97B]/15 shadow-md shadow-[#2D4632]/3"
+          )}
+        >
           {/* Logo */}
           <Link
             href="/"
@@ -86,16 +89,16 @@ export default function Navbar() {
                 window.scrollTo({ top: 0, behavior: "smooth" });
               }
             }}
-            className="flex items-center gap-2 text-xl font-bold font-display tracking-tight text-astrian-charcoal dark:text-gray-100 cursor-pointer"
+            className="flex items-center gap-2.5 text-xl font-bold font-display tracking-tight text-[#233228] dark:text-[#F4F8F2] cursor-pointer group"
           >
-            <div className="h-8 w-8 rounded-full bg-astrian-sage flex items-center justify-center text-white">
-              <Sparkles className="h-4.5 w-4.5" />
+            <div className="h-9 w-9 rounded-full bg-gradient-to-tr from-[#2D4632] to-[#5D7555] dark:from-[#5D7555] dark:to-[#8DA97B] flex items-center justify-center text-white shadow-sm group-hover:scale-105 transition-transform duration-300">
+              <Sparkles className="h-4.5 w-4.5 text-[#F8F7F2]" />
             </div>
-            <span>Astrion</span>
+            <span className="font-semibold tracking-tight text-lg">Astrion <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-[#8DA97B]/20 text-[#2D4632] dark:text-[#8DA97B] ml-1">AI</span></span>
           </Link>
  
           {/* Desktop Navigation links */}
-          <nav className="hidden xl:flex items-center gap-8">
+          <nav className="hidden xl:flex items-center gap-7">
             {navLinks.map((link) => (
               <Link
                 key={link.label}
@@ -103,9 +106,10 @@ export default function Navbar() {
                 onClick={(e) => {
                   handleLinkClick(e, link.href);
                 }}
-                className="text-[0.95rem] font-medium text-astrian-charcoal/80 dark:text-gray-300 hover:text-astrian-sage dark:hover:text-astrian-leaf transition-colors duration-300"
+                className="text-sm font-medium text-[#52625A] dark:text-[#C9D7C3] hover:text-[#2D4632] dark:hover:text-white transition-colors duration-300 relative group py-1"
               >
                 {link.label}
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#5D7555] dark:bg-[#8DA97B] rounded-full group-hover:w-full transition-all duration-300" />
               </Link>
             ))}
           </nav>
@@ -114,11 +118,15 @@ export default function Navbar() {
           <div className="hidden md:flex items-center gap-3">
             <button
               onClick={() => setIsLiveModalOpen(true)}
-              className="px-3.5 py-2 rounded-full bg-[#5D7253]/15 hover:bg-[#5D7253]/25 text-[#5D7253] dark:text-astrian-leaf border border-[#5D7253]/30 text-xs font-bold flex items-center gap-1.5 transition-all cursor-pointer shadow-sm"
+              className="px-4 py-2 rounded-full bg-gradient-to-r from-[#2D4632] to-[#5D7555] hover:from-[#1F2E23] hover:to-[#2D4632] text-[#F8F7F2] text-xs font-semibold flex items-center gap-2 transition-all cursor-pointer shadow-md shadow-[#2D4632]/20 hover:scale-[1.02]"
               title="Launch Astra AI Live Guided Session"
             >
-              <Video className="h-3.5 w-3.5 text-[#5D7253] dark:text-astrian-leaf" />
-              <span>Live AI Session</span>
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#8DA97B] opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#8DA97B]"></span>
+              </span>
+              <Video className="h-3.5 w-3.5 text-[#C9D7C3]" />
+              <span>Live AI Studio</span>
             </button>
 
             <ThemeToggle />
@@ -126,10 +134,10 @@ export default function Navbar() {
             {user ? (
               <UserMenu />
             ) : (
-              <div className="flex items-center gap-4">
+              <div className="flex items-center gap-3">
                 <button
                   onClick={() => openAuthModal()}
-                  className="text-sm font-semibold text-[#1D2530]/80 dark:text-gray-300 hover:text-[#5D7253] dark:hover:text-astrian-leaf transition-colors cursor-pointer focus:outline-none"
+                  className="text-xs font-semibold text-[#233228] dark:text-[#C9D7C3] hover:text-[#5D7555] transition-colors cursor-pointer focus:outline-none px-2"
                 >
                   Sign In
                 </button>
@@ -137,6 +145,7 @@ export default function Navbar() {
                   variant="primary"
                   size="sm"
                   onClick={() => openAuthModal()}
+                  className="bg-[#2D4632] hover:bg-[#1F2E23] text-white rounded-full text-xs font-semibold px-4 py-2 shadow-sm"
                 >
                   Sign Up
                 </Button>
@@ -149,7 +158,7 @@ export default function Navbar() {
             <ThemeToggle />
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="p-2 text-astrian-charcoal dark:text-gray-100 hover:text-astrian-sage transition-colors duration-300 cursor-pointer"
+              className="p-2 text-[#233228] dark:text-[#F4F8F2] hover:text-[#5D7555] transition-colors duration-300 cursor-pointer"
               aria-label="Toggle menu"
             >
               {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}

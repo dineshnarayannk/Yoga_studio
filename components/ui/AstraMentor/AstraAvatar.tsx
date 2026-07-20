@@ -40,30 +40,30 @@ export function AstraAvatar({
             ? { duration: 1.2, repeat: Infinity, ease: "easeInOut" }
             : { duration: 4, repeat: Infinity, ease: "easeInOut" }
         }
-        className="relative group h-16 w-16 sm:h-18 sm:w-18 rounded-full bg-white/85 dark:bg-[#1c1f1d]/90 backdrop-blur-md border border-[#5D7253]/30 dark:border-white/15 shadow-2xl flex items-center justify-center cursor-pointer focus:outline-none transition-shadow duration-300"
+        className="relative group h-16 w-16 sm:h-18 sm:w-18 rounded-full bg-[#F8FBF6]/90 dark:bg-[#0F1611]/90 backdrop-blur-xl border border-[#C9D7C3]/60 dark:border-[#8DA97B]/30 shadow-2xl flex items-center justify-center cursor-pointer focus:outline-none transition-shadow duration-300"
         aria-label="Toggle Astra AI Yoga Mentor"
       >
         {/* Soft Glowing Ring around Avatar */}
         <span
-          className={`absolute -inset-1 rounded-full bg-gradient-to-r from-[#5D7253] via-[#C98D62] to-[#5D7253] opacity-30 blur-sm transition-all duration-500 ${
+          className={`absolute -inset-1 rounded-full bg-gradient-to-r from-[#2D4632] via-[#8DA97B] to-[#5D7555] opacity-40 blur-md transition-all duration-500 ${
             isThinking
-              ? "animate-spin opacity-70"
+              ? "animate-spin opacity-80"
               : isHovered
-              ? "opacity-60 scale-105"
+              ? "opacity-75 scale-105"
               : "animate-pulse"
           }`}
         />
 
         {/* Outer Ring Border */}
-        <div className="absolute inset-0.5 rounded-full border border-[#5D7253]/20 dark:border-white/10" />
+        <div className="absolute inset-0.5 rounded-full border border-[#8DA97B]/40 dark:border-[#8DA97B]/20" />
 
         {/* Content Inside FAB */}
         {isOpen ? (
-          <div className="relative z-10 h-full w-full rounded-full bg-[#5D7253] text-white flex items-center justify-center shadow-inner">
+          <div className="relative z-10 h-full w-full rounded-full bg-[#2D4632] text-white flex items-center justify-center shadow-inner">
             <X className="h-7 w-7 transition-transform duration-300 group-hover:rotate-90" />
           </div>
         ) : (
-          <div className="relative z-10 h-full w-full rounded-full overflow-hidden flex items-center justify-center p-1 bg-gradient-to-b from-[#FBF8F3] to-[#F3EEE6] dark:from-[#1c1f1d] dark:to-[#121413]">
+          <div className="relative z-10 h-full w-full rounded-full overflow-hidden flex items-center justify-center p-1 bg-gradient-to-b from-[#F4F8F2] to-[#EEF5EA] dark:from-[#162019] dark:to-[#0F1611]">
             {/* Astra Avatar Image / Graphic */}
             <motion.div
               animate={
@@ -87,17 +87,17 @@ export function AstraAvatar({
 
             {/* Breathing particles indicator when thinking */}
             {isThinking && (
-              <span className="absolute inset-0 rounded-full border-2 border-[#5D7253] animate-ping opacity-40" />
+              <span className="absolute inset-0 rounded-full border-2 border-[#8DA97B] animate-ping opacity-60" />
             )}
 
             {/* Lotus Flower Tiny Badge */}
-            <div className="absolute top-0 right-0 h-5 w-5 rounded-full bg-[#5D7253] text-white flex items-center justify-center shadow-md border border-white dark:border-[#121413]">
+            <div className="absolute top-0 right-0 h-5 w-5 rounded-full bg-[#2D4632] text-[#F8F7F2] flex items-center justify-center shadow-md border border-[#C9D7C3] dark:border-[#8DA97B]">
               <Flower2 className="h-3 w-3 animate-spin-slow" />
             </div>
 
             {/* Online Status Indicator */}
-            <div className="absolute bottom-0 right-1.5 h-3.5 w-3.5 rounded-full bg-emerald-500 border-2 border-white dark:border-[#121413] shadow-sm">
-              <span className="absolute inset-0 rounded-full bg-emerald-400 animate-ping opacity-75" />
+            <div className="absolute bottom-0 right-1.5 h-3.5 w-3.5 rounded-full bg-[#8DA97B] border-2 border-[#F4F8F2] dark:border-[#0F1611] shadow-sm">
+              <span className="absolute inset-0 rounded-full bg-[#8DA97B] animate-ping opacity-75" />
             </div>
           </div>
         )}

@@ -13,24 +13,27 @@ export default function Schedule() {
   ];
 
   return (
-    <section id="schedule" className="py-24 bg-astrian-oat dark:bg-[#121413] relative overflow-hidden transition-colors duration-300">
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
+    <section id="schedule" className="py-28 bg-[#F4F8F2] dark:bg-[#0F1611] relative overflow-hidden transition-colors duration-300">
+      {/* Ambient Radial Lights */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full bg-radial from-[#8DA97B]/10 to-transparent blur-3xl pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="text-sm font-semibold tracking-wider text-astrian-sage dark:text-astrian-leaf uppercase bg-astrian-sage/10 dark:bg-astrian-sage/20 px-4 py-1.5 rounded-full inline-block mb-4">
-            Daily Calendar
+          <span className="text-xs font-bold tracking-widest text-[#2D4632] dark:text-[#8DA97B] uppercase bg-[#C9D7C3]/40 dark:bg-[#8DA97B]/20 px-4 py-1.5 rounded-full inline-block mb-4 shadow-sm">
+            Daily Sanctuary Rhythms
           </span>
-          <h2 className="text-4xl md:text-5xl font-bold text-astrian-charcoal dark:text-gray-100 mb-4">
-            Weekly Studio Schedule
+          <h2 className="text-4xl md:text-5xl font-bold text-[#233228] dark:text-[#F4F8F2] mb-4">
+            Weekly Live & AI Sessions
           </h2>
-          <p className="text-lg text-astrian-charcoal/70 dark:text-gray-300 font-light leading-relaxed">
-            Choose a time that fits your life. Our classes run throughout the day to support your personal rhythm.
+          <p className="text-lg text-[#52625A] dark:text-[#C9D7C3] font-light leading-relaxed">
+            Reserve your place in guided live studio sessions or drop into AI-personalized flows anytime.
           </p>
         </div>
 
         {/* Schedule Table */}
-        <div className="max-w-4xl mx-auto bg-white dark:bg-[#1c1f1d] rounded-[2.5rem] border border-astrian-clay/60 dark:border-white/10 shadow-[0_12px_40px_rgba(17,24,39,0.03)] overflow-hidden transition-colors duration-300">
-          <div className="divide-y divide-astrian-clay dark:divide-white/5">
+        <div className="max-w-4xl mx-auto glass-card-luxury bg-[#F8FBF6]/90 dark:bg-[#162019]/85 rounded-[2.5rem] border border-[#C9D7C3]/60 dark:border-[#8DA97B]/25 shadow-xl shadow-[#2D4632]/5 overflow-hidden transition-all duration-300">
+          <div className="divide-y divide-[#C9D7C3]/40 dark:divide-[#8DA97B]/15">
             {scheduleData.map((slot, index) => (
               <motion.div
                 key={index}
@@ -38,39 +41,39 @@ export default function Schedule() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1, duration: 0.5 }}
-                 className="p-6 md:p-8 flex flex-col md:flex-row md:items-center justify-between gap-6 hover:bg-astrian-cream/30 dark:hover:bg-[#222623]/30 transition-colors duration-300"
+                className="p-6 md:p-8 flex flex-col md:flex-row md:items-center justify-between gap-6 hover:bg-[#EEF5EA]/60 dark:hover:bg-[#1F2E23]/60 transition-colors duration-300"
               >
                 {/* Time Block */}
-                <div className="flex items-center gap-3">
-                  <div className="h-10 w-10 rounded-full bg-astrian-cream dark:bg-[#222623] flex items-center justify-center text-astrian-sage dark:text-astrian-leaf">
+                <div className="flex items-center gap-3.5">
+                  <div className="h-11 w-11 rounded-2xl bg-[#EEF5EA] dark:bg-[#0F1611] border border-[#C9D7C3]/60 dark:border-[#8DA97B]/20 flex items-center justify-center text-[#2D4632] dark:text-[#8DA97B]">
                     <Clock className="h-5 w-5" />
                   </div>
                   <div>
-                    <p className="text-sm font-semibold text-astrian-charcoal/40 dark:text-gray-400 uppercase tracking-wider">Time</p>
-                    <p className="text-base font-semibold text-astrian-charcoal dark:text-gray-100">{slot.time}</p>
+                    <p className="text-[10px] font-bold text-[#7A867F] dark:text-[#C9D7C3] uppercase tracking-wider">Time Slot</p>
+                    <p className="text-base font-semibold text-[#233228] dark:text-[#F4F8F2]">{slot.time}</p>
                   </div>
                 </div>
 
                 {/* Class details */}
-                <div className="flex-1 md:pl-12">
-                  <span className="inline-block text-xs font-semibold uppercase tracking-wider text-astrian-sage dark:text-astrian-leaf bg-astrian-sage/10 dark:bg-astrian-sage/20 px-2.5 py-0.5 rounded-md mb-1.5">
+                <div className="flex-1 md:pl-10">
+                  <span className="inline-block text-[10px] font-bold uppercase tracking-wider text-[#2D4632] dark:text-[#8DA97B] bg-[#C9D7C3]/40 dark:bg-[#8DA97B]/20 px-3 py-1 rounded-full mb-1.5">
                     {slot.type}
                   </span>
-                  <h4 className="text-xl font-bold text-astrian-charcoal dark:text-gray-100 font-display">
+                  <h4 className="text-xl font-bold text-[#233228] dark:text-[#F4F8F2] font-display">
                     {slot.class}
                   </h4>
                 </div>
 
                 {/* Instructor & CTA */}
-                <div className="flex items-center justify-between md:justify-end gap-12">
-                  <div className="flex items-center gap-2">
-                    <div className="h-8 w-8 rounded-full bg-astrian-clay dark:bg-[#222623] flex items-center justify-center text-astrian-charcoal/60 dark:text-gray-300">
+                <div className="flex items-center justify-between md:justify-end gap-8">
+                  <div className="flex items-center gap-2.5">
+                    <div className="h-9 w-9 rounded-full bg-[#EEF5EA] dark:bg-[#0F1611] border border-[#C9D7C3]/50 flex items-center justify-center text-[#5D7555] dark:text-[#8DA97B]">
                       <User className="h-4 w-4" />
                     </div>
-                    <span className="text-sm font-medium text-astrian-charcoal/80 dark:text-gray-200">{slot.instructor}</span>
+                    <span className="text-xs font-semibold text-[#52625A] dark:text-[#C9D7C3]">{slot.instructor}</span>
                   </div>
-                  <button className="px-5 py-2.5 rounded-full border border-astrian-sage/30 dark:border-astrian-leaf/30 text-astrian-sage dark:text-astrian-leaf hover:bg-astrian-sage dark:hover:bg-astrian-sage hover:text-white dark:hover:text-white transition-all duration-300 text-sm font-semibold cursor-pointer">
-                    Reserve Space
+                  <button className="px-5 py-2.5 rounded-full bg-[#2D4632] hover:bg-[#1F2E23] text-white text-xs font-semibold shadow-sm transition-all duration-300 cursor-pointer">
+                    Reserve Mat
                   </button>
                 </div>
               </motion.div>

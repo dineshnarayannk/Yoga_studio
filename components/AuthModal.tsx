@@ -49,17 +49,17 @@ export function AuthModal() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ type: "spring", duration: 0.5 }}
-            className="relative w-full max-w-md bg-[#FDFBF7] dark:bg-[#121413] border border-astrian-clay dark:border-white/10 rounded-[2.5rem] shadow-2xl p-8 overflow-hidden z-10 transition-colors duration-300"
+            className="relative w-full max-w-md bg-[#F8FBF6]/95 dark:bg-[#0F1611]/95 backdrop-blur-2xl border border-[#C9D7C3]/70 dark:border-[#8DA97B]/30 rounded-[2.5rem] shadow-2xl p-8 overflow-hidden z-10 transition-colors duration-300"
           >
             {/* Background decorative glows */}
-            <div className="absolute top-0 right-0 -mr-16 -mt-16 w-32 h-32 rounded-full bg-astrian-sage/10 blur-2xl pointer-events-none" />
-            <div className="absolute bottom-0 left-0 -ml-16 -mb-16 w-32 h-32 rounded-full bg-astrian-sage/10 blur-2xl pointer-events-none" />
+            <div className="absolute top-0 right-0 -mr-16 -mt-16 w-32 h-32 rounded-full bg-[#8DA97B]/20 blur-2xl pointer-events-none" />
+            <div className="absolute bottom-0 left-0 -ml-16 -mb-16 w-32 h-32 rounded-full bg-[#5D7555]/20 blur-2xl pointer-events-none" />
 
             {/* Close Trigger */}
             {!isAuthenticating && (
               <button
                 onClick={closeAuthModal}
-                className="absolute top-6 right-6 h-8 w-8 rounded-full bg-astrian-clay/20 dark:bg-white/5 text-astrian-charcoal dark:text-gray-300 flex items-center justify-center hover:bg-astrian-clay/40 dark:hover:bg-white/10 transition-colors cursor-pointer"
+                className="absolute top-6 right-6 h-8 w-8 rounded-full bg-[#C9D7C3]/30 dark:bg-white/10 text-[#233228] dark:text-[#C9D7C3] flex items-center justify-center hover:bg-[#8DA97B]/30 transition-colors cursor-pointer"
                 aria-label="Close dialog"
               >
                 <X className="h-4 w-4" />
@@ -68,14 +68,14 @@ export function AuthModal() {
 
             {/* Header */}
             <div className="text-center mb-8">
-              <div className="h-12 w-12 rounded-full bg-astrian-sage text-white flex items-center justify-center mx-auto mb-4 shadow-md">
-                <Sparkles className="h-5 w-5" />
+              <div className="h-12 w-12 rounded-full bg-gradient-to-tr from-[#2D4632] to-[#5D7555] text-white flex items-center justify-center mx-auto mb-4 shadow-md">
+                <Sparkles className="h-5 w-5 text-[#F8F7F2]" />
               </div>
-              <h3 className="text-2xl font-bold font-display text-astrian-charcoal dark:text-gray-100 mb-2">
-                Welcome to Astrion
+              <h3 className="text-2xl font-bold font-display text-[#233228] dark:text-[#F4F8F2] mb-2">
+                Welcome to Astrion AI
               </h3>
-              <p className="text-sm text-astrian-charcoal/60 dark:text-gray-400 font-light">
-                Sign in to book classes, track your practice, and manage your custom wellness goals.
+              <p className="text-xs text-[#52625A] dark:text-[#C9D7C3] font-light">
+                Sign in to book live sessions, sync AI posture feedback, and manage your wellness journey.
               </p>
             </div>
 

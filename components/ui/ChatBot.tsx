@@ -381,12 +381,12 @@ export function ChatBot() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 40 }}
               transition={{ type: "spring", stiffness: 300, damping: 25 }}
-              className="w-[calc(100vw-2rem)] sm:w-[420px] md:w-[460px] h-[660px] max-h-[82vh] bg-white/90 dark:bg-[#1c1f1d]/90 backdrop-blur-xl border border-[#5D7253]/25 dark:border-white/10 rounded-[28px] shadow-2xl overflow-hidden flex flex-col pointer-events-auto transition-colors duration-300"
+              className="w-[calc(100vw-2rem)] sm:w-[420px] md:w-[460px] h-[660px] max-h-[82vh] bg-[#F4F8F2]/95 dark:bg-[#0F1611]/95 backdrop-blur-2xl border border-[#C9D7C3]/70 dark:border-[#8DA97B]/30 rounded-[32px] shadow-2xl shadow-[#2D4632]/15 overflow-hidden flex flex-col pointer-events-auto transition-colors duration-300"
             >
               {/* Header */}
-              <div className="bg-[#FBF8F3]/90 dark:bg-[#121413]/90 border-b border-[#5D7253]/15 dark:border-white/10 px-5 py-3.5 flex items-center justify-between">
+              <div className="bg-[#EEF5EA]/90 dark:bg-[#162019]/90 border-b border-[#C9D7C3]/50 dark:border-[#8DA97B]/20 px-5 py-3.5 flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <div className="h-10 w-10 rounded-full overflow-hidden relative border border-[#5D7253]/30 bg-white flex items-center justify-center p-0.5">
+                  <div className="h-10 w-10 rounded-full overflow-hidden relative border border-[#8DA97B]/40 bg-[#F8FBF6] flex items-center justify-center p-0.5 shadow-sm">
                     <img
                       src="/chatbot-avatar.png"
                       alt="Astra Avatar"
@@ -395,12 +395,12 @@ export function ChatBot() {
                   </div>
                   <div>
                     <div className="flex items-center gap-1.5">
-                      <h3 className="font-bold text-sm text-[#1D2530] dark:text-gray-100 font-display">
-                        Astra AI Mentor
+                      <h3 className="font-bold text-sm text-[#233228] dark:text-[#F4F8F2] font-display">
+                        Astra AI Sanctuary
                       </h3>
-                      <Sparkles className="h-3.5 w-3.5 text-amber-500 fill-amber-500" />
+                      <Sparkles className="h-3.5 w-3.5 text-[#5D7555] dark:text-[#8DA97B] fill-[#5D7555]" />
                     </div>
-                    <p className="text-[11px] text-[#5D7253] dark:text-astrian-leaf font-medium">
+                    <p className="text-[11px] text-[#52625A] dark:text-[#C9D7C3] font-medium">
                       Zen Streak: {streakDays} Days &bull; {zenPoints} Points
                     </p>
                   </div>
@@ -412,16 +412,16 @@ export function ChatBot() {
                       setIsOpen(false);
                       setIsLiveModalOpen(true);
                     }}
-                    className="px-3 py-1 rounded-full bg-[#5D7253] hover:bg-[#4B5940] text-white text-xs font-bold flex items-center gap-1.5 shadow-md transition-all cursor-pointer"
+                    className="px-3.5 py-1.5 rounded-full bg-gradient-to-r from-[#2D4632] to-[#5D7555] hover:from-[#1F2E23] hover:to-[#2D4632] text-white text-xs font-semibold flex items-center gap-1.5 shadow-md transition-all cursor-pointer"
                     title="Launch Astra AI Live Yoga Session"
                   >
-                    <Video className="h-3.5 w-3.5" />
-                    <span>Live AI Session</span>
+                    <Video className="h-3.5 w-3.5 text-[#C9D7C3]" />
+                    <span>Live AI Studio</span>
                   </button>
 
                   <button
                     onClick={() => setIsOpen(false)}
-                    className="h-8 w-8 rounded-full bg-astrian-clay/40 dark:bg-white/10 text-[#1D2530] dark:text-gray-300 flex items-center justify-center hover:bg-[#5D7253]/20 transition-colors cursor-pointer"
+                    className="h-8 w-8 rounded-full bg-[#C9D7C3]/30 dark:bg-white/10 text-[#233228] dark:text-[#C9D7C3] flex items-center justify-center hover:bg-[#8DA97B]/30 transition-colors cursor-pointer"
                     aria-label="Close Astra AI Mentor"
                   >
                     <X className="h-4 w-4" />
@@ -430,24 +430,24 @@ export function ChatBot() {
               </div>
 
               {/* Navigation Tabs Bar */}
-              <div className="flex items-center justify-around bg-[#F3EEE6]/70 dark:bg-[#121413]/50 border-b border-astrian-clay dark:border-white/5 px-2 py-2 text-xs font-semibold">
+              <div className="flex items-center justify-around bg-[#EEF5EA]/60 dark:bg-[#162019]/60 border-b border-[#C9D7C3]/40 dark:border-[#8DA97B]/15 px-2 py-2 text-xs font-semibold">
                 <button
                   onClick={() => setActiveTab("chat")}
-                  className={`px-3 py-1.5 rounded-xl transition-all flex items-center gap-1.5 cursor-pointer ${
+                  className={`px-3.5 py-1.5 rounded-xl transition-all flex items-center gap-1.5 cursor-pointer ${
                     activeTab === "chat"
-                      ? "bg-[#5D7253] text-white shadow-sm"
-                      : "text-[#1D2530]/70 dark:text-gray-300 hover:text-[#5D7253]"
+                      ? "bg-[#2D4632] text-white shadow-sm font-bold"
+                      : "text-[#52625A] dark:text-[#C9D7C3] hover:text-[#2D4632]"
                   }`}
                 >
-                  <Flower2 className="h-3.5 w-3.5" />
+                  <Flower2 className="h-3.5 w-3.5 text-[#8DA97B]" />
                   <span>Mentor</span>
                 </button>
 
                 <button
                   onClick={() => setIsBreathingOverlayOpen(true)}
-                  className="px-3 py-1.5 rounded-xl transition-all flex items-center gap-1.5 text-[#1D2530]/70 dark:text-gray-300 hover:text-[#5D7253] cursor-pointer"
+                  className="px-3 py-1.5 rounded-xl transition-all flex items-center gap-1.5 text-[#52625A] dark:text-[#C9D7C3] hover:text-[#2D4632] cursor-pointer"
                 >
-                  <Wind className="h-3.5 w-3.5 text-emerald-500" />
+                  <Wind className="h-3.5 w-3.5 text-[#5D7555]" />
                   <span>Breathing</span>
                 </button>
 
