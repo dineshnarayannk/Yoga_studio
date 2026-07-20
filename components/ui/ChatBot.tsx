@@ -386,7 +386,7 @@ export function ChatBot() {
                     <img
                       src="/chatbot-avatar.png"
                       alt="Astra Avatar"
-                      className="w-full h-full object-contain scale-[1.25]"
+                      className="w-full h-full object-contain p-0.5"
                     />
                   </div>
                   <div>
