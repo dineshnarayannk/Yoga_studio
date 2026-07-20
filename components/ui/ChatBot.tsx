@@ -156,8 +156,8 @@ function MiniBreathingCircle() {
               phase === "Inhale"
                 ? { scale: [1, 1.3] }
                 : phase === "Hold"
-                ? { scale: 1.3 }
-                : { scale: [1.3, 1] }
+                  ? { scale: 1.3 }
+                  : { scale: [1.3, 1] }
             }
             transition={{
               duration: phase === "Inhale" ? 4 : phase === "Hold" ? 2 : 6,
@@ -224,7 +224,7 @@ export function ChatBot() {
           if (parsed.zenPoints) setZenPoints(parsed.zenPoints);
           if (parsed.meditationMins) setMeditationMins(parsed.meditationMins);
           if (parsed.lastMood) setLastMood(parsed.lastMood);
-        } catch (e) {}
+        } catch (e) { }
       }
     }
   }, []);
@@ -338,14 +338,14 @@ export function ChatBot() {
       });
 
       const data = await res.json();
-      
+
       const astraMsg: Message = {
         id: Math.random().toString(),
         sender: "astra",
         text: data.reply || "Sorry, I'm currently unavailable. Please try again later.",
         timestamp: new Date(),
       };
-      
+
       setMessages((prev) => [...prev, astraMsg]);
       saveState(5, 0);
     } catch (error) {
@@ -369,7 +369,7 @@ export function ChatBot() {
         isOpen={isOpen}
         isThinking={isThinking}
         onClick={() => setIsOpen(!isOpen)}
-        processedAvatarUrl="/chatbot-avatar.png"
+        processedAvatarUrl="/chatbot-avatar.jpg"
       />
 
       {/* Main Glassmorphism Panel Window */}
@@ -388,7 +388,7 @@ export function ChatBot() {
                 <div className="flex items-center gap-3">
                   <div className="h-10 w-10 rounded-full overflow-hidden relative border border-[#8DA97B]/40 bg-[#F8FBF6] flex items-center justify-center p-0.5 shadow-sm">
                     <img
-                      src="/chatbot-avatar.png"
+                      src="/chatbot-avatar.jpg"
                       alt="Astra Avatar"
                       className="w-full h-full object-contain p-0.5"
                     />
@@ -433,11 +433,10 @@ export function ChatBot() {
               <div className="flex items-center justify-around bg-[#EEF5EA]/60 dark:bg-[#162019]/60 border-b border-[#C9D7C3]/40 dark:border-[#8DA97B]/15 px-2 py-2 text-xs font-semibold">
                 <button
                   onClick={() => setActiveTab("chat")}
-                  className={`px-3.5 py-1.5 rounded-xl transition-all flex items-center gap-1.5 cursor-pointer ${
-                    activeTab === "chat"
-                      ? "bg-[#2D4632] text-white shadow-sm font-bold"
-                      : "text-[#52625A] dark:text-[#C9D7C3] hover:text-[#2D4632]"
-                  }`}
+                  className={`px-3.5 py-1.5 rounded-xl transition-all flex items-center gap-1.5 cursor-pointer ${activeTab === "chat"
+                    ? "bg-[#2D4632] text-white shadow-sm font-bold"
+                    : "text-[#52625A] dark:text-[#C9D7C3] hover:text-[#2D4632]"
+                    }`}
                 >
                   <Flower2 className="h-3.5 w-3.5 text-[#8DA97B]" />
                   <span>Mentor</span>
@@ -453,11 +452,10 @@ export function ChatBot() {
 
                 <button
                   onClick={() => setActiveTab("timer")}
-                  className={`px-3 py-1.5 rounded-xl transition-all flex items-center gap-1.5 cursor-pointer ${
-                    activeTab === "timer"
-                      ? "bg-[#5D7253] text-white shadow-sm"
-                      : "text-[#1D2530]/70 dark:text-gray-300 hover:text-[#5D7253]"
-                  }`}
+                  className={`px-3 py-1.5 rounded-xl transition-all flex items-center gap-1.5 cursor-pointer ${activeTab === "timer"
+                    ? "bg-[#5D7253] text-white shadow-sm"
+                    : "text-[#1D2530]/70 dark:text-gray-300 hover:text-[#5D7253]"
+                    }`}
                 >
                   <Timer className="h-3.5 w-3.5" />
                   <span>Timer</span>
@@ -465,11 +463,10 @@ export function ChatBot() {
 
                 <button
                   onClick={() => setActiveTab("playlists")}
-                  className={`px-3 py-1.5 rounded-xl transition-all flex items-center gap-1.5 cursor-pointer ${
-                    activeTab === "playlists"
-                      ? "bg-[#5D7253] text-white shadow-sm"
-                      : "text-[#1D2530]/70 dark:text-gray-300 hover:text-[#5D7253]"
-                  }`}
+                  className={`px-3 py-1.5 rounded-xl transition-all flex items-center gap-1.5 cursor-pointer ${activeTab === "playlists"
+                    ? "bg-[#5D7253] text-white shadow-sm"
+                    : "text-[#1D2530]/70 dark:text-gray-300 hover:text-[#5D7253]"
+                    }`}
                 >
                   <Music className="h-3.5 w-3.5" />
                   <span>Music</span>
@@ -477,11 +474,10 @@ export function ChatBot() {
 
                 <button
                   onClick={() => setActiveTab("dashboard")}
-                  className={`px-3 py-1.5 rounded-xl transition-all flex items-center gap-1.5 cursor-pointer ${
-                    activeTab === "dashboard"
-                      ? "bg-[#5D7253] text-white shadow-sm"
-                      : "text-[#1D2530]/70 dark:text-gray-300 hover:text-[#5D7253]"
-                  }`}
+                  className={`px-3 py-1.5 rounded-xl transition-all flex items-center gap-1.5 cursor-pointer ${activeTab === "dashboard"
+                    ? "bg-[#5D7253] text-white shadow-sm"
+                    : "text-[#1D2530]/70 dark:text-gray-300 hover:text-[#5D7253]"
+                    }`}
                 >
                   <Award className="h-3.5 w-3.5 text-amber-500" />
                   <span>Stats</span>
@@ -499,16 +495,23 @@ export function ChatBot() {
                     {messages.map((msg) => (
                       <div
                         key={msg.id}
-                        className={`flex w-full ${
-                          msg.sender === "user" ? "justify-end" : "justify-start"
-                        }`}
-                      >
-                        <div
-                          className={`max-w-[88%] rounded-2xl p-4 text-sm leading-relaxed ${
-                            msg.sender === "user"
-                              ? "bg-[#5D7253] text-white rounded-br-none shadow-md"
-                              : "bg-white dark:bg-[#121413] text-[#1D2530] dark:text-gray-200 rounded-bl-none border border-astrian-clay dark:border-white/5 shadow-sm"
+                        className={`flex w-full gap-2 ${msg.sender === "user" ? "justify-end" : "justify-start"
                           }`}
+                      >
+                        {msg.sender === "astra" && (
+                          <div className="h-8 w-8 shrink-0 rounded-full overflow-hidden border border-[#8DA97B]/40 bg-[#F8FBF6] flex items-center justify-center p-0.5 shadow-sm mt-1">
+                            <img
+                              src="/chatbot-avatar.jpg"
+                              alt="Chatbot Avatar"
+                              className="w-full h-full object-contain p-0.5"
+                            />
+                          </div>
+                        )}
+                        <div
+                          className={`max-w-[80%] rounded-2xl p-4 text-sm leading-relaxed ${msg.sender === "user"
+                            ? "bg-[#5D7253] text-white rounded-br-none shadow-md"
+                            : "bg-white dark:bg-[#121413] text-[#1D2530] dark:text-gray-200 rounded-bl-none border border-astrian-clay dark:border-white/5 shadow-sm"
+                            }`}
                         >
                           {msg.text}
 

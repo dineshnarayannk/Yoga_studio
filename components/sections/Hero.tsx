@@ -6,6 +6,7 @@ import Link from "next/link";
 import { motion, Variants } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Star } from "lucide-react";
+import { HeroCarousel } from "@/components/ui/HeroCarousel";
 
 const QUOTES = [
   { line1: "Move. Connect.", line2: "Transform." },
@@ -236,17 +237,8 @@ export default function Hero() {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
           className="lg:col-span-5 relative flex justify-center items-center w-full"
         >
-          {/* Framed Image Container */}
-          <div className="relative w-full max-w-[420px] aspect-[4/5] rounded-[2.5rem] overflow-hidden border-4 border-[#C9D7C3]/60 dark:border-[#8DA97B]/30 shadow-2xl shadow-[#2D4632]/12 bg-[#F8FBF6] dark:bg-[#162019] transition-all duration-300">
-            <Image
-              src="/yoga-pose-hero.png"
-              alt="Serene AI Guided Yoga Sanctuary"
-              fill
-              className="object-cover object-center transform hover:scale-105 transition-transform duration-700"
-              priority
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#2D4632]/40 via-transparent to-transparent pointer-events-none" />
-          </div>
+          {/* Framed Image Carousel */}
+          <HeroCarousel />
 
           {/* Floating Philosophy badge */}
           <motion.div

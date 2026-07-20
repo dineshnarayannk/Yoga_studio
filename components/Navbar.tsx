@@ -91,8 +91,8 @@ export default function Navbar() {
             }}
             className="flex items-center gap-2.5 text-xl font-bold font-display tracking-tight text-[#233228] dark:text-[#F4F8F2] cursor-pointer group"
           >
-            <div className="h-9 w-9 rounded-full bg-gradient-to-tr from-[#2D4632] to-[#5D7555] dark:from-[#5D7555] dark:to-[#8DA97B] flex items-center justify-center text-white shadow-sm group-hover:scale-105 transition-transform duration-300">
-              <Sparkles className="h-4.5 w-4.5 text-[#F8F7F2]" />
+            <div className="h-9 w-9 relative flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
+              <img src="/title_icon.png" alt="Yoga Studio Logo" className="w-full h-full object-contain" />
             </div>
             <span className="font-semibold tracking-tight text-lg">Astrion <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-[#8DA97B]/20 text-[#2D4632] dark:text-[#8DA97B] ml-1">AI</span></span>
           </Link>

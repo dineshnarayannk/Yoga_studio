@@ -4,15 +4,14 @@ import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { cn } from "@/lib/utils";
 
-// Example images array. Can be expanded easily.
 const heroImages = [
-  "/yoga-pose-hero.png",
-  "/images/hero2.jpg",
-  "/images/hero3.jpg",
-  "/images/hero4.jpg",
-]; 1111
+  "/1.png",
+  "/2.jpg",
+  "/3.jpg",
+  "/4.jpg",
+  "/5.jpg",
+];
 
 export function HeroCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -73,7 +72,7 @@ export function HeroCarousel() {
 
   return (
     <div
-      className="relative w-full max-w-[420px] aspect-[4/5] rounded-[3rem] overflow-hidden border-[12px] border-white dark:border-[#1c1f1d] shadow-[0_24px_50px_rgba(17,24,39,0.06)] bg-astrian-cream dark:bg-[#1c1f1d] transition-colors duration-300 group"
+      className="relative w-full max-w-[420px] aspect-[4/5] rounded-[2.5rem] overflow-hidden border-4 border-[#C9D7C3]/60 dark:border-[#8DA97B]/30 shadow-2xl shadow-[#2D4632]/12 bg-[#F8FBF6] dark:bg-[#162019] transition-all duration-300 group"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -89,7 +88,7 @@ export function HeroCarousel() {
         >
           <Image
             src={heroImages[currentIndex]}
-            alt={`Hero Carousel Image ${currentIndex + 1}`}
+            alt={`Yoga Studio Feature ${currentIndex + 1}`}
             fill
             className="object-cover object-center"
             priority={currentIndex === 0}
@@ -98,10 +97,12 @@ export function HeroCarousel() {
         </motion.div>
       </AnimatePresence>
 
+      <div className="absolute inset-0 bg-gradient-to-t from-[#2D4632]/40 via-transparent to-transparent pointer-events-none" />
+
       {/* Navigation Arrows */}
       <button
         onClick={prevSlide}
-        className="absolute left-4 top-1/2 -translate-y-1/2 h-10 w-10 rounded-full bg-black/20 backdrop-blur-md text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-black/40 z-10 hidden md:flex"
+        className="absolute left-4 top-1/2 -translate-y-1/2 h-10 w-10 rounded-full bg-white/20 backdrop-blur-md text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-white/40 z-10 hidden md:flex"
         aria-label="Previous slide"
       >
         <ChevronLeft className="h-6 w-6" />
@@ -109,7 +110,7 @@ export function HeroCarousel() {
 
       <button
         onClick={nextSlide}
-        className="absolute right-4 top-1/2 -translate-y-1/2 h-10 w-10 rounded-full bg-black/20 backdrop-blur-md text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-black/40 z-10 hidden md:flex"
+        className="absolute right-4 top-1/2 -translate-y-1/2 h-10 w-10 rounded-full bg-white/20 backdrop-blur-md text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-white/40 z-10 hidden md:flex"
         aria-label="Next slide"
       >
         <ChevronRight className="h-6 w-6" />
@@ -122,12 +123,10 @@ export function HeroCarousel() {
             key={index}
             onClick={() => goToSlide(index)}
             aria-label={`Go to slide ${index + 1}`}
-            className={cn(
-              "h-1.5 rounded-full transition-all duration-300 cursor-pointer",
-              index === currentIndex
-                ? "w-6 bg-white shadow-md"
-                : "w-2 bg-white/50 hover:bg-white/80"
-            )}
+            className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${index === currentIndex
+              ? "w-6 bg-white shadow-md"
+              : "w-2 bg-white/50 hover:bg-white/80"
+              }`}
           />
         ))}
       </div>

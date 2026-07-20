@@ -15,7 +15,7 @@ export function AstraAvatar({
   isOpen,
   isThinking = false,
   onClick,
-  processedAvatarUrl = "/chatbot-avatar.png",
+  processedAvatarUrl = "/chatbot-avatar.jpg",
 }: AstraAvatarProps) {
   const [isHovered, setIsHovered] = useState(false);
 
