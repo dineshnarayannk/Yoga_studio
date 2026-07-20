@@ -31,6 +31,19 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-[90vh] pt-32 pb-20 flex items-center overflow-hidden bg-astrian-oat dark:bg-[#121413] transition-colors duration-300">
+      {/* Background Studio Image Layer */}
+      <div className="absolute inset-0 -z-10 overflow-hidden">
+        <Image
+          src="/hero-bg.jpg"
+          alt="Studio Interior Background"
+          fill
+          priority
+          className="object-cover object-center"
+        />
+        {/* Elegant overlay allowing full image visibility while keeping text crisp */}
+        <div className="absolute inset-0 bg-[#FDFBF7]/30 dark:bg-[#121413]/55 transition-colors duration-300" />
+      </div>
+
       {/* Background organic shape */}
       <div className="absolute top-[-20%] right-[-10%] w-[600px] h-[600px] rounded-full bg-astrian-cream dark:bg-[#1c1f1d]/20 blur-3xl -z-10 opacity-70" />
       <div className="absolute bottom-[-10%] left-[-10%] w-[400px] h-[400px] rounded-full bg-astrian-clay/40 dark:bg-astrian-sage/5 blur-3xl -z-10 opacity-60" />

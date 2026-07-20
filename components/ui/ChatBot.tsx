@@ -15,31 +15,150 @@ interface Message {
 const getBotResponse = (input: string): string => {
   const query = input.toLowerCase();
 
-  if (query.includes("schedule") || query.includes("timetable") || query.includes("time") || query.includes("calendar") || query.includes("hour")) {
-    return "Our studio is open Mon-Fri (6 AM - 9 PM) and Sat-Sun (8 AM - 6 PM). Check our interactive weekly slots on the [Schedule page](/schedule)!";
+  // Safety Rules check
+  if (
+    query.includes("pain") || 
+    query.includes("hurt") || 
+    query.includes("injur") || 
+    query.includes("pregnan") || 
+    query.includes("heart") || 
+    query.includes("doctor") || 
+    query.includes("medical") || 
+    query.includes("disease") ||
+    query.includes("ache")
+  ) {
+    return "Namaste. Your safety and health are of the utmost importance to us. If you are experiencing severe pain, recovering from an injury, managing pregnancy, dealing with a heart condition, or managing any other serious health concern, we kindly but strongly advise you to consult with a qualified healthcare professional before beginning or continuing your yoga practice. We want to support you safely.\n\nOnce cleared, we recommend starting with very low intensity options like our **[Restorative Yin](/classes)** sessions. Would you like any additional assistance related to yoga or wellness?";
   }
 
-  if (query.includes("class") || query.includes("style") || query.includes("hatha") || query.includes("vinyasa") || query.includes("yin")) {
-    return "We offer Vinyasa Flow (energy), Hatha Harmony (alignment), and Yin Yoga (deep restoration). Explore curriculum details on the [Classes page](/classes).";
+  // Class Recommendation
+  if (
+    query.includes("recommend") || 
+    query.includes("suggest") || 
+    query.includes("choose") || 
+    query.includes("which class") || 
+    query.includes("fit") || 
+    query.includes("goal") || 
+    query.includes("flexibility")
+  ) {
+    return "I would love to help you find the perfect practice! Here are our suggestions based on your personal wellness goals:\n\n* **For Stress Relief & Deep Release**: Try our **[Restorative Yin](/classes)** (all levels, passive structural focus).\n* **For Alignment & Mechanics**: Try our **[Hatha Harmony](/classes)** (beginner-friendly, posture breakdowns).\n* **For Fluidity & Energy**: Try our **[Vinyasa Flow](/classes)** (all levels, link movement to breath).\n* **For Strength & Core Conditioning**: Try our **[Core Power Elements](/classes)** (intermediate/advanced, high intensity).\n\nWhat are your main goals for your practice today? Would you like any additional assistance related to yoga or wellness?";
   }
 
-  if (query.includes("price") || query.includes("cost") || query.includes("free") || query.includes("trial") || query.includes("membership") || query.includes("fee")) {
-    return "Your first class is completely free! Claim your session by filling out our [Free Trial form](/enquiry).";
+  // Beginner Friendly Guidance
+  if (
+    query.includes("beginner") || 
+    query.includes("newbie") || 
+    query.includes("start") || 
+    query.includes("easy") || 
+    query.includes("first time") || 
+    query.includes("level")
+  ) {
+    return "Starting a new yoga journey is a beautiful step! For beginners, we highly recommend our **[Hatha Harmony](/classes)** or **[Restorative Yin](/classes)** classes. These options systematically break down poses, prioritize safety alignment, and build comfort at a steady pace. Remember, we encourage consistency and self-awareness over perfection.\n\nWould you like to try a free trial session? Let me know if you need any additional assistance related to yoga or wellness!";
   }
 
-  if (query.includes("where") || query.includes("location") || query.includes("address") || query.includes("map")) {
-    return "We are located at 120 Serenity Lane, Wellness District, CA 90210. View the interactive map on our [Contact page](/contact?map=1).";
+  // Yoga poses details (benefits, mistakes, safety)
+  if (
+    query.includes("pose") || 
+    query.includes("asana") || 
+    query.includes("downward dog") || 
+    query.includes("warrior") || 
+    query.includes("plank") || 
+    query.includes("stretch") ||
+    query.includes("position")
+  ) {
+    return "### Yoga Postures (Asanas) Guide\n\n* **Downward Dog (Adho Mukha Svanasana)**: Builds upper body strength and stretches hamstrings. Avoid shrugging your shoulders; focus on pushing the floor away to extend your spine up and back.\n* **Warrior II (Virabhadrasana II)**: Strengthens legs and opens hips. Ensure your front knee is directly aligned over your ankle and does not collapse inward.\n* **Child's Pose (Balasana)**: A wonderful beginner-friendly rest posture to quiet the mind and release the lower back. Keep your breathing slow and deep.\n\nAlways practice at your own pace and prioritize comfort over complexity. Would you like any additional assistance related to yoga or wellness?";
   }
 
-  if (query.includes("instructor") || query.includes("guide") || query.includes("teacher") || query.includes("darius") || query.includes("elena") || query.includes("marcus") || query.includes("sarah")) {
-    return "Our certified guides include Elena (Vinyasa), Marcus (Hatha), Sarah (Yin), and Darius (Strength). Read profiles on our [Instructors page](/instructors).";
+  // Breathing (Pranayama) & Meditation techniques
+  if (
+    query.includes("meditat") || 
+    query.includes("mindful") || 
+    query.includes("pranayama") || 
+    query.includes("breath") || 
+    query.includes("calm") || 
+    query.includes("relax") ||
+    query.includes("stress")
+  ) {
+    return "### Breathing & Meditation Techniques\n\n* **Nadi Shodhana (Alternate Nostril Breathing)**: Excellent for balancing the nervous system, reducing anxiety, and establishing mental clarity.\n* **Box Breathing (4-4-4-4 count)**: Inhale for 4 seconds, hold for 4, exhale for 4, hold for 4. Repeat for 3-5 cycles to regulate stress response.\n* **Mindfulness Meditation**: Sit comfortably with a straight spine, close your eyes, and observe your natural breath. Let thoughts pass by like clouds without judgment.\n\nWe offer dedicated **[Pranayama & Meditation](/classes)** classes! Would you like any additional assistance related to yoga or wellness?";
   }
 
-  if (query.includes("hello") || query.includes("hi") || query.includes("hey") || query.includes("namaste")) {
-    return "Namaste! 🙏 I'm your Astrion Guide. How can I support your practice today? Ask me about classes, schedules, locations, or guides!";
+  // Office stretching / Morning & Evening routines / General Nutrition
+  if (
+    query.includes("office") || 
+    query.includes("desk") || 
+    query.includes("morning") || 
+    query.includes("evening") || 
+    query.includes("nutrition") || 
+    query.includes("diet") || 
+    query.includes("eat") ||
+    query.includes("routine")
+  ) {
+    return "### Wellness & Lifestyle Suggestions\n\n* **Office Stretching**: Perform gentle neck rolls, shoulder rolls, and seated spinal twists every 90 minutes to relieve desk fatigue.\n* **Morning Practice**: Wake up the spine with a gentle **[Vinyasa Flow](/classes)** to invite fresh energy.\n* **Evening Practice**: Wind down with passive folds and Child's Pose to prepare your nervous system for deep sleep.\n* **Yoga Nutrition**: Hydrate well with warm herbal tea, and focus on wholesome, light, plant-based foods that nourish the body without feeling heavy.\n\nWould you like any additional assistance related to yoga or wellness?";
   }
 
-  return "I'd love to help you with that! For booking sessions, custom guides, or group bookings, feel free to send us an inquiry on our [Contact page](/contact) or drop by for a [Free Trial](/enquiry)!";
+  // Schedule & Open hours
+  if (
+    query.includes("schedule") || 
+    query.includes("timetable") || 
+    query.includes("time") || 
+    query.includes("calendar") || 
+    query.includes("hour") || 
+    query.includes("open") || 
+    query.includes("business")
+  ) {
+    return "### Studio Hours & Timetable\n\n* **Mon - Fri**: 6:00 AM - 9:00 PM\n* **Sat - Sun**: 8:00 AM - 6:00 PM\n\nCheck our interactive weekly timetable on the **[Schedule page](/schedule)** to see specific class slots, filter by styles, or view instructor assignments.\n\nWould you like any additional assistance related to yoga or wellness?";
+  }
+
+  // Pricing, membership plans & booking cancelation
+  if (
+    query.includes("price") || 
+    query.includes("cost") || 
+    query.includes("free") || 
+    query.includes("trial") || 
+    query.includes("membership") || 
+    query.includes("fee") || 
+    query.includes("book") || 
+    query.includes("cancel") ||
+    query.includes("reschedule")
+  ) {
+    return "### Membership Plans & Bookings\n\n* **Free Trial**: Your first signature class at Astrion is completely free! Claim your space via the **[Free Trial Enquiry form](/enquiry)**.\n* **Drop-in Class**: $22 per session.\n* **Monthly Unlimited Pass**: $120/month for unlimited classes.\n* **Booking Cancelations**: You can manage bookings online. For cancelations or rescheduling, please notify us at least 2 hours before class.\n\nWould you like any additional assistance related to yoga or wellness?";
+  }
+
+  // Instructor guidance
+  if (
+    query.includes("instructor") || 
+    query.includes("guide") || 
+    query.includes("teacher") || 
+    query.includes("darius") || 
+    query.includes("elena") || 
+    query.includes("marcus") || 
+    query.includes("sarah")
+  ) {
+    return "### Our Wellness Guides\n\nOur instructors are fully certified, compassionate guides:\n\n* **Elena**: Vinyasa Flow specialist.\n* **Marcus**: Structural alignment & Hatha expert.\n* **Sarah**: Restorative & Yin guide.\n* **Darius**: Core conditioning & strength coordinator.\n\nExplore detailed profiles and teaching specialties on our **[Instructors page](/instructors)**. Would you like any additional assistance related to yoga or wellness?";
+  }
+
+  // Retreats, workshops & facilities
+  if (
+    query.includes("event") || 
+    query.includes("workshop") || 
+    query.includes("retreat") || 
+    query.includes("amenities") || 
+    query.includes("facilities") || 
+    query.includes("studio")
+  ) {
+    return "### Studio Amenities & Special Programs\n\n* **Amenities**: Free organic linen mats, fresh filtered water, premium changing rooms, lockers, and a hot herbal tea lounge.\n* **Workshops & Retreats**: We host monthly weekend sound baths, pranayama depth workshops, and seasonal outdoor retreats. Ask our front desk for upcoming dates!\n\nWould you like any additional assistance related to yoga or wellness?";
+  }
+
+  // Greetings check
+  if (
+    query.includes("hello") || 
+    query.includes("hi") || 
+    query.includes("hey") || 
+    query.includes("namaste")
+  ) {
+    return "Namaste! 🙏 Welcome to Astrion Studio. I'm your digital wellness guide. How can I support your practice or journey today? Ask me about classes, schedules, wellness tips, or instructors!\n\nWould you like any additional assistance related to yoga or wellness?";
+  }
+
+  return "I'd love to help you with that! For booking sessions, custom guides, or specific scheduling questions, feel free to send us an inquiry on our **[Contact page](/contact)**, check out our **[FAQ page](/faq)**, or claim a **[Free Trial](/enquiry)**!\n\nWould you like any additional assistance related to yoga or wellness?";
 };
 
 // Client-side canvas helper to remove white backgrounds and crop empty padding dynamically

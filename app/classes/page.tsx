@@ -4,9 +4,24 @@ import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import Image from "next/image";
 import { Sparkles, Activity, Moon, Compass, Heart, Flame } from "lucide-react";
+import { useAuth } from "@/hooks/useAuth";
+import { useRouter } from "next/navigation";
 
 export default function ClassesPage() {
+  const { user, openAuthModal } = useAuth();
+  const router = useRouter();
+
+  const handleBookingClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (!user) {
+      e.preventDefault();
+      openAuthModal(() => {
+        router.push("/enquiry");
+      });
+    }
+  };
+
   const classesExtended = [
     {
       title: "Vinyasa Flow",
@@ -16,7 +31,8 @@ export default function ClassesPage() {
       description: "Vinyasa connects individual poses ('asanas') with deep diaphragmatic breath. This flow builds cardiovascular endurance, full-body muscular tone, and core stability, leaving you energized and mentally centered.",
       icon: <Activity className="h-6 w-6 text-astrian-sage" />,
       benefits: ["Cardiovascular health", "Muscle toning", "Stress release"],
-      focus: "Fluidity & Breath Link"
+      focus: "Fluidity & Breath Link",
+      image: "/class-vinyasa.png"
     },
     {
       title: "Hatha Harmony",
@@ -26,7 +42,8 @@ export default function ClassesPage() {
       description: "Classical, alignment-focused Hatha yoga. This class breaks down postures systematically, focusing on deep structural holds, safety adjustments, and respiratory coordination. Perfect for building confidence and flexibility.",
       icon: <Sparkles className="h-6 w-6 text-astrian-sage" />,
       benefits: ["Structural alignment", "Core foundation", "Flexibility"],
-      focus: "Posture & Mechanics"
+      focus: "Posture & Mechanics",
+      image: "/class-hatha.png"
     },
     {
       title: "Restorative Yin",
@@ -36,7 +53,8 @@ export default function ClassesPage() {
       description: "Yin yoga targets the deep connective tissues—fascia, ligaments, and joints. Postures are held passively for 3-5 minutes, allowing gravity to release deep-seated physical tension while calming the parasympathetic nervous system.",
       icon: <Moon className="h-6 w-6 text-astrian-sage" />,
       benefits: ["Joint health", "Deep relaxation", "Fascia release"],
-      focus: "Stillness & Deep Tissue"
+      focus: "Stillness & Deep Tissue",
+      image: "/class-yin.png"
     },
     {
       title: "Pranayama & Meditation",
@@ -46,7 +64,8 @@ export default function ClassesPage() {
       description: "Explore the ancient science of breath control (Pranayama) combined with guided silent meditation. Learn tools to regulate stress, increase vital capacity, and cultivate a quiet, focused headspace for daily life.",
       icon: <Compass className="h-6 w-6 text-astrian-sage" />,
       benefits: ["Lung capacity", "Mental clarity", "Nerve regulation"],
-      focus: "Breath Control & Mind"
+      focus: "Breath Control & Mind",
+      image: "/class-meditation.png"
     },
     {
       title: "Gentle Flow & Sound",
@@ -56,7 +75,8 @@ export default function ClassesPage() {
       description: "A slow-paced, soothing Vinyasa flow that prepares the body and mind to absorb the deep therapeutic vibrations of a live crystal singing bowl and gong sound bath in the final extended Savasana.",
       icon: <Heart className="h-6 w-6 text-astrian-sage" />,
       benefits: ["Vibrational recovery", "Sound therapy", "Gentle stretching"],
-      focus: "Sound & Nervous System"
+      focus: "Sound & Nervous System",
+      image: "/class-gentle-sound.png"
     },
     {
       title: "Core Power Elements",
@@ -66,7 +86,8 @@ export default function ClassesPage() {
       description: "An intense practice combining athletic yoga transitions, core-specific conditioning, and arm balance drills. Designed to build functional upper body strength, deep core engagement, and physical heat.",
       icon: <Flame className="h-6 w-6 text-astrian-sage" />,
       benefits: ["Core conditioning", "Functional strength", "Arm balance drills"],
-      focus: "Power & Balance"
+      focus: "Power & Balance",
+      image: "/class-core-power.png"
     }
   ];
 
@@ -76,7 +97,7 @@ export default function ClassesPage() {
         
         {/* Header */}
         <div className="max-w-3xl mx-auto text-center mb-20">
-          <span className="text-sm font-semibold tracking-wider text-astrian-sage dark:text-astrian-leaf uppercase bg-astrian-sage/10 dark:bg-astrian-sage/20 px-4 py-1.5 rounded-full inline-block mb-4">
+          <span className="text-sm font-semibold tracking-wider text-astrian-sage dark:text-astrian-leaf uppercase bg-astrian-sage/10 dark:bg-astrian-sage/20 px-4 py-1.5 rounded-full inline-block mb-4 animate-pulse">
             Curriculum
           </span>
           <h1 className="text-5xl md:text-6xl font-bold font-display text-astrian-charcoal dark:text-gray-100 mb-6 leading-tight">
@@ -96,51 +117,68 @@ export default function ClassesPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1, duration: 0.5 }}
+              className="flex"
             >
-              <Card className="h-full flex flex-col justify-between hover:border-astrian-sage/20 hover:shadow-lg transition-all duration-300">
-                <div>
-                  <div className="flex items-center justify-between mb-6">
-                    <div className="h-12 w-12 rounded-2xl bg-astrian-cream dark:bg-[#1c1f1d] border border-astrian-clay dark:border-white/10 flex items-center justify-center transition-colors duration-300">
-                      {item.icon}
-                    </div>
-                    <span className="text-xs font-semibold uppercase tracking-wider text-astrian-sage dark:text-astrian-leaf bg-astrian-sage/10 dark:bg-astrian-sage/20 px-3 py-1 rounded-full">
-                      {item.focus}
-                    </span>
-                  </div>
-                  
-                  <h3 className="text-2xl font-bold text-astrian-charcoal dark:text-gray-100 font-display mb-2">{item.title}</h3>
-                  
-                  <div className="flex flex-wrap gap-x-4 gap-y-1.5 text-xs font-medium text-astrian-charcoal/60 dark:text-gray-400 mb-4 uppercase tracking-wider">
-                    <span>{item.level}</span>
-                    <span>•</span>
-                    <span>{item.duration}</span>
-                    <span>•</span>
-                    <span>{item.intensity} Intensity</span>
-                  </div>
-                  
-                  <p className="text-astrian-charcoal/70 dark:text-gray-300 leading-relaxed font-light mb-6 text-sm">
-                    {item.description}
-                  </p>
+              <Card className="p-0 h-full flex flex-col justify-between overflow-hidden hover:border-astrian-sage/20 hover:shadow-lg transition-all duration-300 group">
+                
+                {/* Class Card Image */}
+                <div className="relative w-full aspect-[16/10] overflow-hidden bg-astrian-cream dark:bg-[#1c1f1d]">
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+                </div>
 
-                  <div className="space-y-1.5 border-t border-astrian-clay/60 dark:border-white/5 pt-4 mb-6">
-                    <h4 className="text-xs font-bold uppercase tracking-wider text-astrian-charcoal/40 dark:text-gray-500">Core Benefits</h4>
-                    <div className="flex flex-wrap gap-2 pt-1">
-                      {item.benefits.map((benefit, idx) => (
-                        <span key={idx} className="text-xs font-semibold text-astrian-charcoal/80 dark:text-gray-200 bg-astrian-cream dark:bg-[#1c1f1d] px-2.5 py-1 rounded-md border border-astrian-clay/50 dark:border-white/10 transition-colors duration-300">
-                          {benefit}
-                        </span>
-                      ))}
+                <div className="p-8 flex-grow flex flex-col justify-between">
+                  <div>
+                    <div className="flex items-center justify-between mb-6">
+                      <div className="h-12 w-12 rounded-2xl bg-astrian-cream dark:bg-[#1c1f1d] border border-astrian-clay dark:border-white/10 flex items-center justify-center transition-colors duration-300">
+                        {item.icon}
+                      </div>
+                      <span className="text-xs font-semibold uppercase tracking-wider text-astrian-sage dark:text-astrian-leaf bg-astrian-sage/10 dark:bg-astrian-sage/20 px-3 py-1 rounded-full animate-pulse">
+                        {item.focus}
+                      </span>
                     </div>
+                    
+                    <h3 className="text-2xl font-bold text-astrian-charcoal dark:text-gray-100 font-display mb-2">{item.title}</h3>
+                    
+                    <div className="flex flex-wrap gap-x-4 gap-y-1.5 text-xs font-medium text-astrian-charcoal/60 dark:text-gray-400 mb-4 uppercase tracking-wider">
+                      <span>{item.level}</span>
+                      <span>•</span>
+                      <span>{item.duration}</span>
+                      <span>•</span>
+                      <span>{item.intensity} Intensity</span>
+                    </div>
+                    
+                    <p className="text-astrian-charcoal/70 dark:text-gray-300 leading-relaxed font-light mb-6 text-sm">
+                      {item.description}
+                    </p>
+
+                    <div className="space-y-1.5 border-t border-astrian-clay/60 dark:border-white/5 pt-4 mb-6">
+                      <h4 className="text-xs font-bold uppercase tracking-wider text-astrian-charcoal/40 dark:text-gray-500">Core Benefits</h4>
+                      <div className="flex flex-wrap gap-2 pt-1">
+                        {item.benefits.map((benefit, idx) => (
+                          <span key={idx} className="text-xs font-semibold text-astrian-charcoal/80 dark:text-gray-200 bg-astrian-cream dark:bg-[#1c1f1d] px-2.5 py-1 rounded-md border border-astrian-clay/50 dark:border-white/10 transition-colors duration-300">
+                            {benefit}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="pt-4 flex justify-between items-center">
+                    <Link href="/enquiry" onClick={handleBookingClick} className="w-full">
+                      <Button variant="secondary" className="w-full text-sm">
+                        Book Free Trial Space
+                      </Button>
+                    </Link>
                   </div>
                 </div>
 
-                <div className="pt-4 flex justify-between items-center">
-                  <Link href="/enquiry" className="w-full">
-                    <Button variant="secondary" className="w-full text-sm">
-                      Book Free Trial Space
-                    </Button>
-                  </Link>
-                </div>
               </Card>
             </motion.div>
           ))}
