@@ -237,20 +237,6 @@ export function ChatBot() {
         {isOpen && (
           <div className="fixed bottom-24 right-6 z-50 flex items-end justify-end pointer-events-none">
             
-            {/* Standing Character gesturing to the chatbot window */}
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: 30 }}
-              transition={{ type: "spring", duration: 0.5, delay: 0.1 }}
-              className="w-[180px] h-[360px] mr-1 hidden lg:block pointer-events-none select-none relative"
-            >
-              <img
-                src={processedAvatarUrl}
-                alt="Marcus Gesturing"
-                className="w-full h-full object-contain object-bottom filter drop-shadow-md"
-              />
-            </motion.div>
 
             {/* Chat Box */}
             <motion.div
@@ -292,22 +278,6 @@ export function ChatBot() {
                 ref={scrollRef}
                 className="flex-1 overflow-y-auto p-6 space-y-4 bg-astrian-oat/20 dark:bg-[#1c1f1d] custom-scrollbar"
               >
-                {/* Welcoming Character Card (avatar preview) */}
-                <div className="p-4 bg-white dark:bg-[#121413] rounded-3xl border border-astrian-clay dark:border-white/5 flex items-center gap-4 shadow-sm transition-colors duration-300">
-                  <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-full bg-white border border-astrian-clay dark:border-white/5">
-                    <img
-                      src={processedAvatarUrl}
-                      alt="Astrion Guide Welcome"
-                      className="w-full h-full object-contain scale-[1.3] translate-y-0.5"
-                    />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-sm text-astrian-charcoal dark:text-gray-100 font-display">Marcus</h4>
-                    <p className="text-[11px] text-astrian-charcoal/60 dark:text-gray-400 leading-relaxed font-light mt-0.5">
-                      Your personal yoga guide. Ask me about classes, weekly schedules, guides, or free trial inquiries.
-                    </p>
-                  </div>
-                </div>
 
                 {messages.map((msg) => (
                   <div
@@ -325,6 +295,7 @@ export function ChatBot() {
                     </div>
                   </div>
                 ))}
+
                 
                 {/* Typing indicator */}
                 {isTyping && (
