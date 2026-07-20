@@ -1,10 +1,88 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, Variants } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Star } from "lucide-react";
+
+const QUOTES = [
+  { line1: "Move. Connect.", line2: "Transform." },
+  { line1: "Breathe. Balance.", line2: "Bloom." },
+  { line1: "Flow. Focus.", line2: "Flourish." },
+  { line1: "Calm. Strength.", line2: "Harmony." },
+];
+
+function AutoTypingHeading() {
+  const [quoteIndex, setQuoteIndex] = useState(0);
+  const [charIndex, setCharIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
+
+  const currentQuote = QUOTES[quoteIndex];
+  const totalLength = currentQuote.line1.length + currentQuote.line2.length;
+
+  useEffect(() => {
+    if (isPaused) {
+      const pauseTimer = setTimeout(() => {
+        setIsPaused(false);
+        setIsDeleting(true);
+      }, 2200);
+      return () => clearTimeout(pauseTimer);
+    }
+
+    const speed = isDeleting ? 40 : 80;
+
+    const timer = setTimeout(() => {
+      if (!isDeleting) {
+        if (charIndex < totalLength) {
+          setCharIndex((prev) => prev + 1);
+        } else {
+          setIsPaused(true);
+        }
+      } else {
+        if (charIndex > 0) {
+          setCharIndex((prev) => prev - 1);
+        } else {
+          setIsDeleting(false);
+          setQuoteIndex((prev) => (prev + 1) % QUOTES.length);
+        }
+      }
+    }, speed);
+
+    return () => clearTimeout(timer);
+  }, [charIndex, isDeleting, isPaused, totalLength]);
+
+  const line1Len = currentQuote.line1.length;
+  const typedLine1 = currentQuote.line1.slice(0, Math.min(charIndex, line1Len));
+  const typedLine2 =
+    charIndex > line1Len
+      ? currentQuote.line2.slice(0, charIndex - line1Len)
+      : "";
+
+  const isCursorOnLine1 = charIndex <= line1Len;
+
+  return (
+    <div className="min-h-[120px] sm:min-h-[140px] md:min-h-[175px] flex flex-col justify-start">
+      <h1 className="text-5xl md:text-7xl font-bold font-display tracking-tight text-astrian-charcoal dark:text-gray-100 leading-[1.08] text-balance">
+        <span>
+          {typedLine1}
+          {isCursorOnLine1 && (
+            <span className="inline-block w-[3px] md:w-[5px] h-[0.75em] bg-astrian-sage dark:bg-astrian-leaf ml-1.5 align-middle animate-pulse rounded-full" />
+          )}
+        </span>
+        <br />
+        <span className="text-astrian-sage dark:text-astrian-leaf">
+          {typedLine2}
+          {!isCursorOnLine1 && (
+            <span className="inline-block w-[3px] md:w-[5px] h-[0.75em] bg-astrian-sage dark:bg-astrian-leaf ml-1.5 align-middle animate-pulse rounded-full" />
+          )}
+        </span>
+      </h1>
+    </div>
+  );
+}
 
 export default function Hero() {
   const containerVariants: Variants = {
@@ -65,14 +143,10 @@ export default function Hero() {
             Serene Studio in the Heart of the Community
           </motion.div>
 
-          {/* Headline */}
-          <motion.h1
-            variants={itemVariants}
-            className="text-5xl md:text-7xl font-bold font-display tracking-tight text-astrian-charcoal dark:text-gray-100 mb-6 leading-[1.08] text-balance"
-          >
-            Move. Connect.<br />
-            <span className="text-astrian-sage dark:text-astrian-leaf">Transform.</span>
-          </motion.h1>
+          {/* Auto-typing Headline */}
+          <motion.div variants={itemVariants} className="mb-6 w-full">
+            <AutoTypingHeading />
+          </motion.div>
 
           {/* Description */}
           <motion.p
