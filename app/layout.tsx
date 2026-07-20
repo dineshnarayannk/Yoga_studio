@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import { Outfit, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/Layout/Navbar";
+import Navbar from "@/components/Navbar";
 import Footer from "@/components/Layout/Footer";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { ChatBot } from "@/components/ui/ChatBot";
+import { AuthProvider } from "@/context/AuthContext";
+import { AuthModal } from "@/components/AuthModal";
 
 const outfit = Outfit({
   variable: "--font-outfit",
@@ -48,12 +50,15 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Navbar />
-          <div className="flex-grow">
-            {children}
-          </div>
-          <Footer />
-          <ChatBot />
+          <AuthProvider>
+            <Navbar />
+            <div className="flex-grow">
+              {children}
+            </div>
+            <Footer />
+            <ChatBot />
+            <AuthModal />
+          </AuthProvider>
         </ThemeProvider>
       </body>
     </html>

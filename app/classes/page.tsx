@@ -6,8 +6,22 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
 import { Sparkles, Activity, Moon, Compass, Heart, Flame } from "lucide-react";
+import { useAuth } from "@/hooks/useAuth";
+import { useRouter } from "next/navigation";
 
 export default function ClassesPage() {
+  const { user, openAuthModal } = useAuth();
+  const router = useRouter();
+
+  const handleBookingClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (!user) {
+      e.preventDefault();
+      openAuthModal(() => {
+        router.push("/enquiry");
+      });
+    }
+  };
+
   const classesExtended = [
     {
       title: "Vinyasa Flow",
@@ -157,7 +171,7 @@ export default function ClassesPage() {
                   </div>
 
                   <div className="pt-4 flex justify-between items-center">
-                    <Link href="/enquiry" className="w-full">
+                    <Link href="/enquiry" onClick={handleBookingClick} className="w-full">
                       <Button variant="secondary" className="w-full text-sm">
                         Book Free Trial Space
                       </Button>

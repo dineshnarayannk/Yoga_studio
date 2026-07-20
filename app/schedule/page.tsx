@@ -6,6 +6,8 @@ import { Clock, User, Calendar, SlidersHorizontal, Check } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { useAuth } from "@/hooks/useAuth";
+import { useRouter } from "next/navigation";
 
 interface ClassSession {
   id: string;
@@ -52,6 +54,18 @@ type DifficultyFilter = "all" | "beginner" | "intermediate" | "advanced";
 type DayFilter = "All Days" | "Monday" | "Tuesday" | "Wednesday" | "Thursday" | "Friday" | "Saturday" | "Sunday";
 
 export default function SchedulePage() {
+  const { user, openAuthModal } = useAuth();
+  const router = useRouter();
+
+  const handleBookingClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (!user) {
+      e.preventDefault();
+      openAuthModal(() => {
+        router.push("/enquiry");
+      });
+    }
+  };
+
   const [selectedDay, setSelectedDay] = useState<DayFilter>("Monday");
   const [category, setCategory] = useState<CategoryFilter>("all");
   const [difficulty, setDifficulty] = useState<DifficultyFilter>("all");
@@ -233,7 +247,7 @@ export default function SchedulePage() {
                         </div>
                         <span className="text-sm font-medium text-astrian-charcoal/80 dark:text-gray-200">{slot.instructor}</span>
                       </div>
-                      <Link href="/enquiry">
+                      <Link href="/enquiry" onClick={handleBookingClick}>
                         <button className="px-5 py-2.5 rounded-full border border-astrian-sage/30 dark:border-astrian-leaf/30 text-astrian-sage dark:text-astrian-leaf hover:bg-astrian-sage dark:hover:bg-astrian-sage hover:text-white dark:hover:text-white transition-all duration-300 text-sm font-semibold cursor-pointer">
                           Book Space
                         </button>
