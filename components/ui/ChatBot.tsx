@@ -372,6 +372,20 @@ export function ChatBot() {
         processedAvatarUrl="/chatbot-avatar.jpg"
       />
 
+      {/* Background Blur Overlay */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, backdropFilter: "blur(0px)" }}
+            animate={{ opacity: 1, backdropFilter: "blur(4px)" }}
+            exit={{ opacity: 0, backdropFilter: "blur(0px)" }}
+            transition={{ duration: 0.3 }}
+            onClick={() => setIsOpen(false)}
+            className="fixed inset-0 z-30 bg-black/5 dark:bg-black/40 pointer-events-auto"
+          />
+        )}
+      </AnimatePresence>
+
       {/* Main Glassmorphism Panel Window */}
       <AnimatePresence>
         {isOpen && (
