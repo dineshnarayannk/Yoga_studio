@@ -64,7 +64,7 @@ const removeWhiteBackground = (imageSrc: string): Promise<string> => {
       ctx.drawImage(img, 0, 0);
       const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
       const data = imgData.data;
-      
+
       let minX = canvas.width;
       let minY = canvas.height;
       let maxX = 0;
@@ -78,7 +78,7 @@ const removeWhiteBackground = (imageSrc: string): Promise<string> => {
           const r = data[idx];
           const g = data[idx + 1];
           const b = data[idx + 2];
-          
+
           // If pixel is very close to pure white, make it transparent
           if (r > 248 && g > 248 && b > 248) {
             data[idx + 3] = 0; // set alpha to 0 (transparent)
@@ -91,7 +91,7 @@ const removeWhiteBackground = (imageSrc: string): Promise<string> => {
           }
         }
       }
-      
+
       if (hasData) {
         const cropWidth = maxX - minX + 1;
         const cropHeight = maxY - minY + 1;
@@ -106,7 +106,7 @@ const removeWhiteBackground = (imageSrc: string): Promise<string> => {
           return;
         }
       }
-      
+
       ctx.putImageData(imgData, 0, 0);
       resolve(canvas.toDataURL());
     };
@@ -236,7 +236,7 @@ export function ChatBot() {
       <AnimatePresence>
         {isOpen && (
           <div className="fixed bottom-24 right-6 z-50 flex items-end justify-end pointer-events-none">
-            
+
 
             {/* Chat Box */}
             <motion.div
@@ -274,7 +274,7 @@ export function ChatBot() {
               </div>
 
               {/* Messages Panel */}
-              <div 
+              <div
                 ref={scrollRef}
                 className="flex-1 overflow-y-auto p-6 space-y-4 bg-astrian-oat/20 dark:bg-[#1c1f1d] custom-scrollbar"
               >
@@ -285,18 +285,17 @@ export function ChatBot() {
                     className={`flex w-full ${msg.sender === "user" ? "justify-end" : "justify-start"}`}
                   >
                     <div
-                      className={`max-w-[85%] rounded-[1.5rem] px-4.5 py-3 text-sm leading-relaxed ${
-                        msg.sender === "user"
+                      className={`max-w-[85%] rounded-[1.5rem] px-4.5 py-3 text-sm leading-relaxed ${msg.sender === "user"
                           ? "bg-astrian-sage text-white rounded-br-none"
                           : "bg-astrian-cream dark:bg-[#121413] text-astrian-charcoal dark:text-gray-200 rounded-bl-none border border-astrian-clay/50 dark:border-white/5"
-                      }`}
+                        }`}
                     >
                       {msg.sender === "user" ? msg.text : renderMessageText(msg.text)}
                     </div>
                   </div>
                 ))}
 
-                
+
                 {/* Typing indicator */}
                 {isTyping && (
                   <div className="flex w-full justify-start">
@@ -310,7 +309,7 @@ export function ChatBot() {
               </div>
 
               {/* Input Row */}
-              <form 
+              <form
                 onSubmit={handleSend}
                 className="border-t border-astrian-clay dark:border-white/5 px-6 py-4 flex items-center gap-3 bg-white dark:bg-[#1c1f1d] transition-colors duration-300"
               >

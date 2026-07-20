@@ -12,11 +12,12 @@ export default function Footer() {
         
         {/* Brand / Logo */}
         <div className="md:col-span-4 flex flex-col items-start gap-4">
-          <Link href="/" className="flex items-center gap-2 text-xl font-bold font-display tracking-tight text-astrian-charcoal dark:text-gray-100">
-            <div className="h-8 w-8 rounded-full bg-astrian-sage flex items-center justify-center text-white">
-              <Sparkles className="h-4.5 w-4.5" />
-            </div>
-            <span>Astrion</span>
+          <Link href="/" className="flex items-center cursor-pointer">
+            <img 
+              src="/logo.png" 
+              alt="Yoga Studio Logo" 
+              className="h-12 w-auto object-contain" 
+            />
           </Link>
           <p className="text-sm text-astrian-charcoal/60 dark:text-gray-400 leading-relaxed font-light max-w-sm">
             A serene sanctuary dedicated to mindful movement, holistic wellness, and community connection. Join us to move, breathe, and transform.

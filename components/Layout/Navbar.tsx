@@ -76,12 +76,13 @@ export default function Navbar() {
                 window.scrollTo({ top: 0, behavior: "smooth" });
               }
             }}
-            className="flex items-center gap-2 text-xl font-bold font-display tracking-tight text-astrian-charcoal dark:text-gray-100 cursor-pointer"
+            className="flex items-center cursor-pointer"
           >
-            <div className="h-8 w-8 rounded-full bg-astrian-sage flex items-center justify-center text-white">
-              <Sparkles className="h-4.5 w-4.5" />
-            </div>
-            <span>Astrion</span>
+            <img 
+              src="/logo.png" 
+              alt="Yoga Studio Logo" 
+              className="h-12 w-auto object-contain" 
+            />
           </Link>
  
           {/* Desktop Navigation */}
