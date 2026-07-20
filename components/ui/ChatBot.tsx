@@ -16,6 +16,7 @@ import {
   RefreshCw,
   Heart,
   Calendar,
+  Video,
 } from "lucide-react";
 import Link from "next/link";
 import { AstraAvatar } from "./AstraMentor/AstraAvatar";
@@ -23,6 +24,8 @@ import { AstraBreathingOverlay } from "./AstraMentor/AstraBreathingOverlay";
 import { AstraMeditationTimer } from "./AstraMentor/AstraMeditationTimer";
 import { AstraPlaylists } from "./AstraMentor/AstraPlaylists";
 import { AstraDashboard } from "./AstraMentor/AstraDashboard";
+import { AstraLiveSessionModal, CategoryPractice } from "./AstraMentor/AstraLiveSessionModal";
+import { AstraLiveStudio } from "./AstraMentor/AstraLiveStudio";
 
 // Types
 interface MoodCard {
@@ -188,6 +191,8 @@ export function ChatBot() {
   const [inputValue, setInputValue] = useState("");
   const [isThinking, setIsThinking] = useState(false);
   const [isBreathingOverlayOpen, setIsBreathingOverlayOpen] = useState(false);
+  const [isLiveModalOpen, setIsLiveModalOpen] = useState(false);
+  const [activeSessionData, setActiveSessionData] = useState<CategoryPractice | null>(null);
 
   // User Memory State
   const [streakDays, setStreakDays] = useState(5);
@@ -300,7 +305,7 @@ export function ChatBot() {
       setMessages((prev) => [...prev, astraMsg]);
       saveState(10, 0, mood.label);
       scrollToBottom();
-    }, 800);
+    }, 200);
   };
 
   const handleSendText = async (e: React.FormEvent) => {
@@ -318,6 +323,7 @@ export function ChatBot() {
     setMessages(newMessages);
     setInputValue("");
     setIsThinking(true);
+    scrollToBottom();
 
     try {
       const apiMessages = newMessages.map(msg => ({
@@ -400,7 +406,19 @@ export function ChatBot() {
                   </div>
                 </div>
 
-                <div className="flex items-center gap-1">
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={() => {
+                      setIsOpen(false);
+                      setIsLiveModalOpen(true);
+                    }}
+                    className="px-3 py-1 rounded-full bg-[#5D7253] hover:bg-[#4B5940] text-white text-xs font-bold flex items-center gap-1.5 shadow-md transition-all cursor-pointer"
+                    title="Launch Astra AI Live Yoga Session"
+                  >
+                    <Video className="h-3.5 w-3.5" />
+                    <span>Live AI Session</span>
+                  </button>
+
                   <button
                     onClick={() => setIsOpen(false)}
                     className="h-8 w-8 rounded-full bg-astrian-clay/40 dark:bg-white/10 text-[#1D2530] dark:text-gray-300 flex items-center justify-center hover:bg-[#5D7253]/20 transition-colors cursor-pointer"
@@ -668,6 +686,23 @@ export function ChatBot() {
           }
         }}
       />
+
+      {/* Astra AI Live Session Modal & Studio Launcher */}
+      <AstraLiveSessionModal
+        isOpen={isLiveModalOpen}
+        onClose={() => setIsLiveModalOpen(false)}
+        onStartSession={(data) => {
+          setIsLiveModalOpen(false);
+          setActiveSessionData(data);
+        }}
+      />
+
+      {activeSessionData && (
+        <AstraLiveStudio
+          sessionData={activeSessionData}
+          onEndSession={() => setActiveSessionData(null)}
+        />
+      )}
     </>
   );
 }

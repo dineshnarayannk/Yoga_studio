@@ -2,18 +2,24 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Menu, X, Sparkles, User, LogOut, Calendar, Settings as SettingsIcon } from "lucide-react";
+import { Menu, X, Sparkles, User, LogOut, Calendar, Video, Settings as SettingsIcon } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { useAuth } from "@/hooks/useAuth";
 import { UserMenu } from "@/components/UserMenu";
+import { AstraLiveSessionModal, CategoryPractice } from "@/components/ui/AstraMentor/AstraLiveSessionModal";
+import { AstraLiveStudio } from "@/components/ui/AstraMentor/AstraLiveStudio";
 
 export default function Navbar() {
   const { user, openAuthModal, logout } = useAuth();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  // Astra AI Live Session modal & studio state
+  const [isLiveModalOpen, setIsLiveModalOpen] = useState(false);
+  const [activeSessionData, setActiveSessionData] = useState<CategoryPractice | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {  
@@ -105,7 +111,16 @@ export default function Navbar() {
           </nav>
  
           {/* Action Row & Theme Toggle */}
-          <div className="hidden md:flex items-center gap-4">
+          <div className="hidden md:flex items-center gap-3">
+            <button
+              onClick={() => setIsLiveModalOpen(true)}
+              className="px-3.5 py-2 rounded-full bg-[#5D7253]/15 hover:bg-[#5D7253]/25 text-[#5D7253] dark:text-astrian-leaf border border-[#5D7253]/30 text-xs font-bold flex items-center gap-1.5 transition-all cursor-pointer shadow-sm"
+              title="Launch Astra AI Live Guided Session"
+            >
+              <Video className="h-3.5 w-3.5 text-[#5D7253] dark:text-astrian-leaf" />
+              <span>Live AI Session</span>
+            </button>
+
             <ThemeToggle />
             
             {user ? (
@@ -114,7 +129,7 @@ export default function Navbar() {
               <div className="flex items-center gap-4">
                 <button
                   onClick={() => openAuthModal()}
-                  className="text-sm font-semibold text-astrian-charcoal/80 dark:text-gray-300 hover:text-astrian-sage dark:hover:text-astrian-leaf transition-colors cursor-pointer focus:outline-none"
+                  className="text-sm font-semibold text-[#1D2530]/80 dark:text-gray-300 hover:text-[#5D7253] dark:hover:text-astrian-leaf transition-colors cursor-pointer focus:outline-none"
                 >
                   Sign In
                 </button>
@@ -253,6 +268,23 @@ export default function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Astra AI Live Session Modal & Studio Launcher */}
+      <AstraLiveSessionModal
+        isOpen={isLiveModalOpen}
+        onClose={() => setIsLiveModalOpen(false)}
+        onStartSession={(data) => {
+          setIsLiveModalOpen(false);
+          setActiveSessionData(data);
+        }}
+      />
+
+      {activeSessionData && (
+        <AstraLiveStudio
+          sessionData={activeSessionData}
+          onEndSession={() => setActiveSessionData(null)}
+        />
+      )}
     </>
   );
 }
