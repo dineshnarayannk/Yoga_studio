@@ -303,9 +303,9 @@ export function ChatBot() {
     }, 800);
   };
 
-  const handleSendText = (e: React.FormEvent) => {
+  const handleSendText = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!inputValue.trim()) return;
+    if (!inputValue.trim() || isThinking) return;
 
     const userMsg: Message = {
       id: Math.random().toString(),
@@ -314,41 +314,46 @@ export function ChatBot() {
       timestamp: new Date(),
     };
 
-    setMessages((prev) => [...prev, userMsg]);
-    const input = inputValue.toLowerCase();
+    const newMessages = [...messages, userMsg];
+    setMessages(newMessages);
     setInputValue("");
     setIsThinking(true);
 
-    setTimeout(() => {
-      setIsThinking(false);
-      let replyText =
-        "Namaste 🙏 I hear you deeply. Let's bring focus back to your breathing and posture. Remember, consistency and self-compassion build true inner balance.";
-      let matchedMood = "calm";
+    try {
+      const apiMessages = newMessages.map(msg => ({
+        role: msg.sender === "astra" ? "bot" : "user",
+        content: msg.text
+      }));
 
-      if (input.includes("stress") || input.includes("overwhelmed") || input.includes("hard")) matchedMood = "stressed";
-      else if (input.includes("tire") || input.includes("exhaust") || input.includes("sleep")) matchedMood = "tired";
-      else if (input.includes("anxious") || input.includes("worry") || input.includes("fear")) matchedMood = "anxious";
-      else if (input.includes("flexib") || input.includes("stretch") || input.includes("stiff")) matchedMood = "flexibility";
-      else if (input.includes("strong") || input.includes("power") || input.includes("core")) matchedMood = "strength";
+      const res = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ messages: apiMessages }),
+      });
 
-      const resp = MOOD_RESPONSES[matchedMood];
-
+      const data = await res.json();
+      
       const astraMsg: Message = {
         id: Math.random().toString(),
         sender: "astra",
-        text: `${replyText}\n\nToday's recommended practice for you:`,
+        text: data.reply || "Sorry, I'm currently unavailable. Please try again later.",
         timestamp: new Date(),
-        recommendationData: {
-          poses: resp.poses,
-          classCard: resp.classCard,
-          showBreathingMini: true,
-          showFollowUpPrompt: true,
-        },
       };
-
+      
       setMessages((prev) => [...prev, astraMsg]);
       saveState(5, 0);
-    }, 850);
+    } catch (error) {
+      console.error("Chat error:", error);
+      const errorMessage: Message = {
+        id: Math.random().toString(),
+        sender: "astra",
+        text: "Sorry, I'm currently unavailable. Please try again later.",
+        timestamp: new Date(),
+      };
+      setMessages((prev) => [...prev, errorMessage]);
+    } finally {
+      setIsThinking(false);
+    }
   };
 
   return (

@@ -13,7 +13,7 @@ export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {  
+    const handleScroll = () => {
       if (window.scrollY > 20) {
         setIsScrolled(true);
       } else {
@@ -36,7 +36,7 @@ export default function Navbar() {
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     setIsMobileMenuOpen(false);
-    
+
     if (href.startsWith("/#") || href.startsWith("#")) {
       const id = href.replace(/^\/#?/, "#");
       const element = document.querySelector(id);
@@ -76,15 +76,14 @@ export default function Navbar() {
                 window.scrollTo({ top: 0, behavior: "smooth" });
               }
             }}
-            className="flex items-center cursor-pointer"
+            className="flex items-center gap-2 text-xl font-bold font-display tracking-tight text-astrian-charcoal dark:text-gray-100 cursor-pointer"
           >
-            <img 
-              src="/logo.png" 
-              alt="Yoga Studio Logo" 
-              className="h-12 w-auto object-contain" 
-            />
+            <div className="h-8 w-8 rounded-full bg-astrian-sage flex items-center justify-center text-white">
+              <Sparkles className="h-4.5 w-4.5" />
+            </div>
+            <span>Astrion</span>
           </Link>
- 
+
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
@@ -100,7 +99,7 @@ export default function Navbar() {
               </Link>
             ))}
           </nav>
- 
+
           {/* Action Button & Theme Toggle */}
           <div className="hidden md:flex items-center gap-4">
             <ThemeToggle />
@@ -113,7 +112,7 @@ export default function Navbar() {
               </Button>
             </Link>
           </div>
- 
+
           {/* Mobile Actions (Theme Toggle & Menu Button) */}
           <div className="flex md:hidden items-center gap-2">
             <ThemeToggle />
@@ -127,7 +126,7 @@ export default function Navbar() {
           </div>
         </div>
       </header>
- 
+
       {/* Mobile Drawer */}
       <AnimatePresence>
         {isMobileMenuOpen && (
