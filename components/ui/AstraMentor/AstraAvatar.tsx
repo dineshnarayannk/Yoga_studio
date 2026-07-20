@@ -81,7 +81,7 @@ export function AstraAvatar({
               <img
                 src={processedAvatarUrl}
                 alt="Astra AI Mentor Avatar"
-                className="w-full h-full object-contain scale-[1.25] translate-y-0.5"
+                className="w-full h-full object-contain p-0.5"
               />
             </motion.div>
 
