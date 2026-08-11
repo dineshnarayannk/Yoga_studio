@@ -18,8 +18,8 @@
 
 ## 🛠️ Tech Stack
 
-- **Framework**: [Next.js 16](https://nextjs.org/) (App Router)
-- **UI Library**: [React 19](https://react.dev/)
+- **Framework**: [Next.js](https://nextjs.org/) (App Router)
+- **UI Library**: [React](https://react.dev/)
 - **Language**: [TypeScript](https://www.typescriptlang.org/)
 - **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
 - **Animations**: [Framer Motion](https://framer.com/motion)
