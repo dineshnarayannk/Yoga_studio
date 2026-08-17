@@ -1,4 +1,4 @@
-# 🧘 YogaHub - Modern Yoga & Mindfulness Studio
+# 🧘 YogaHub - Modern Yoga & Mindfulness Studio - test
 
 **YogaHub** is a modern, responsive web application designed for a contemporary yoga studio. Built with Next.js 16, React 19, TypeScript, and Framer Motion, it features an interactive **Astra AI Wellness Mentor** powered by Google Gemini, seamless Firebase Authentication, class scheduling, interactive UI elements, and full dark/light theme customization.
 
