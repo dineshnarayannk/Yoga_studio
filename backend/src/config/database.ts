@@ -1,5 +1,7 @@
 import mysql from 'mysql2/promise';
 import dotenv from 'dotenv';
+import fs from 'fs';
+import path from 'path';
 
 dotenv.config();
 
@@ -22,7 +24,8 @@ const pool = mysql.createPool({
   // TiDB Cloud requires SSL
   ssl: {
     minVersion: 'TLSv1.2',
-    rejectUnauthorized: true
+    rejectUnauthorized: true,
+    ca: fs.readFileSync(path.join(__dirname, '../../cert/ca.pem'))
   },
   
   // Reasonable connection limits
