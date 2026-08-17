@@ -1,12 +1,9 @@
 import type { Metadata } from "next";
 import { Outfit, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Layout/Footer";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
-import { ChatBot } from "@/components/ui/ChatBot";
 import { AuthProvider } from "@/context/AuthContext";
-import { AuthModal } from "@/components/AuthModal";
+import { PublicLayoutWrapper } from "@/components/Layout/PublicLayoutWrapper";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 
 const outfit = Outfit({
@@ -53,13 +50,9 @@ export default function RootLayout({
         >
           <GoogleOAuthProvider clientId={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID || 'dummy-client-id-for-build'}>
             <AuthProvider>
-              <Navbar />
-              <div className="flex-grow">
+              <PublicLayoutWrapper>
                 {children}
-              </div>
-              <Footer />
-              <ChatBot />
-              <AuthModal />
+              </PublicLayoutWrapper>
             </AuthProvider>
           </GoogleOAuthProvider>
         </ThemeProvider>

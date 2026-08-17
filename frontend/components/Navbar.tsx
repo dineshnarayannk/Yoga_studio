@@ -135,19 +135,13 @@ export default function Navbar() {
               <UserMenu />
             ) : (
               <div className="flex items-center gap-3">
-                <button
-                  onClick={() => openAuthModal()}
-                  className="text-xs font-semibold text-[#233228] dark:text-[#C9D7C3] hover:text-[#5D7555] transition-colors cursor-pointer focus:outline-none px-2"
-                >
-                  Sign In
-                </button>
                 <Button
                   variant="primary"
                   size="sm"
                   onClick={() => openAuthModal()}
                   className="bg-[#2D4632] hover:bg-[#1F2E23] text-white rounded-full text-xs font-semibold px-4 py-2 shadow-sm"
                 >
-                  Sign Up
+                  Sign In
                 </Button>
               </div>
             )}
@@ -260,17 +254,8 @@ export default function Navbar() {
                       openAuthModal();
                     }}
                   >
-                    Sign Up
-                  </Button>
-                  <button
-                    onClick={() => {
-                      setIsMobileMenuOpen(false);
-                      openAuthModal();
-                    }}
-                    className="w-full text-center py-3 text-sm font-semibold text-astrian-charcoal dark:text-gray-300 hover:text-astrian-sage transition-colors cursor-pointer"
-                  >
                     Sign In
-                  </button>
+                  </Button>
                 </div>
               )}
             </div>

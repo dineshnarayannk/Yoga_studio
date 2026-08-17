@@ -21,9 +21,18 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
+import adminPracticesRoutes from './routes/admin.practices.routes';
+import adminInstructorsRoutes from './routes/admin.instructors.routes';
+import adminDashboardRoutes from './routes/admin.dashboard.routes';
+import adminSessionsRoutes from './routes/admin.sessions.routes';
+
 // Routes
 app.use('/api', healthRoutes);
 app.use('/api/auth', authRoutes);
+app.use('/api/admin/practices', adminPracticesRoutes);
+app.use('/api/admin/instructors', adminInstructorsRoutes);
+app.use('/api/admin/dashboard', adminDashboardRoutes);
+app.use('/api/admin/sessions', adminSessionsRoutes);
 
 // 404 handler
 app.use((req: Request, res: Response, next: NextFunction) => {

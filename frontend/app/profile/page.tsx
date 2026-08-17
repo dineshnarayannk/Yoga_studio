@@ -102,7 +102,7 @@ function ProfileContent() {
               onClick={() => openAuthModal()}
               className="flex items-center gap-2"
             >
-              <Sparkles className="h-4.5 w-4.5" /> Sign In / Sign Up
+              <Sparkles className="h-4.5 w-4.5" /> Sign In
             </Button>
           </Card>
         </div>

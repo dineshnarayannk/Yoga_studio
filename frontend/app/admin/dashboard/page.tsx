@@ -1,117 +1,121 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { useAuth } from "@/hooks/useAuth";
-import { useRouter } from "next/navigation";
-import { useEffect } from "react";
-import { LayoutDashboard, Users, Calendar, Settings, LogOut } from "lucide-react";
+import { AdminLayout } from "@/components/admin/AdminLayout";
+import { getDashboardStats, DashboardStats } from "@/lib/api/admin/dashboard";
+import { 
+  Users, 
+  Flower2, 
+  UserSquare2, 
+  Calendar, 
+  CalendarCheck2, 
+  Ticket, 
+  MessageSquareHeart,
+  Activity,
+  Loader2
+} from "lucide-react";
 
 export default function AdminDashboardPage() {
-  const { user, loading, logout } = useAuth();
-  const router = useRouter();
+  const { user } = useAuth();
+  const [statsData, setStatsData] = useState<DashboardStats | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    if (!loading) {
-      if (!user) {
-        router.push("/admin");
-      } else if (user.role !== "ADMIN") {
-        router.push("/admin");
+    const fetchStats = async () => {
+      try {
+        const data = await getDashboardStats();
+        setStatsData(data);
+      } catch (error) {
+        console.error("Failed to load dashboard stats", error);
+      } finally {
+        setIsLoading(false);
       }
-    }
-  }, [user, loading, router]);
+    };
+    fetchStats();
+  }, []);
 
-  if (loading || !user || user.role !== "ADMIN") {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-astrian-sage"></div>
-      </div>
-    );
-  }
+  const stats = [
+    { label: "Total Users", value: isLoading ? <Loader2 className="w-5 h-5 animate-spin" /> : statsData?.totalUsers ?? "-", icon: Users, color: "text-blue-500", bg: "bg-blue-50 dark:bg-blue-900/20" },
+    { label: "Total Practices", value: isLoading ? <Loader2 className="w-5 h-5 animate-spin" /> : statsData?.totalPractices ?? "-", icon: Flower2, color: "text-emerald-500", bg: "bg-emerald-50 dark:bg-emerald-900/20" },
+    { label: "Total Instructors", value: isLoading ? <Loader2 className="w-5 h-5 animate-spin" /> : statsData?.totalInstructors ?? "-", icon: UserSquare2, color: "text-purple-500", bg: "bg-purple-50 dark:bg-purple-900/20" },
+    { label: "Upcoming Sessions", value: isLoading ? <Loader2 className="w-5 h-5 animate-spin" /> : statsData?.upcomingSessions ?? "-", icon: Calendar, color: "text-amber-500", bg: "bg-amber-50 dark:bg-amber-900/20" },
+    { label: "Total Bookings", value: isLoading ? <Loader2 className="w-5 h-5 animate-spin" /> : statsData?.totalBookings ?? "-", icon: CalendarCheck2, color: "text-indigo-500", bg: "bg-indigo-50 dark:bg-indigo-900/20" },
+    { label: "Pending Passes", value: isLoading ? <Loader2 className="w-5 h-5 animate-spin" /> : statsData?.pendingPasses ?? "-", icon: Ticket, color: "text-rose-500", bg: "bg-rose-50 dark:bg-rose-900/20" },
+    { label: "Pending Reviews", value: isLoading ? <Loader2 className="w-5 h-5 animate-spin" /> : statsData?.pendingReviews ?? "-", icon: MessageSquareHeart, color: "text-orange-500", bg: "bg-orange-50 dark:bg-orange-900/20" },
+  ];
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-[#0F1611] flex flex-col md:flex-row">
-      {/* Sidebar */}
-      <aside className="w-full md:w-64 bg-white dark:bg-[#1c1f1d] border-r border-gray-200 dark:border-white/10 p-6 flex flex-col">
-        <div className="mb-8">
-          <h2 className="text-2xl font-bold font-display text-astrian-charcoal dark:text-gray-100">
-            Admin Portal
-          </h2>
-          <p className="text-xs text-gray-500 mt-1">Yoga Studio Management</p>
-        </div>
-
-        <nav className="flex-1 space-y-2">
-          <button className="w-full flex items-center gap-3 px-4 py-3 bg-astrian-sage/10 text-astrian-sage rounded-xl font-medium">
-            <LayoutDashboard className="h-5 w-5" />
-            Dashboard
-          </button>
-          <button className="w-full flex items-center gap-3 px-4 py-3 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-white/5 rounded-xl font-medium transition-colors">
-            <Calendar className="h-5 w-5" />
-            Sessions
-          </button>
-          <button className="w-full flex items-center gap-3 px-4 py-3 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-white/5 rounded-xl font-medium transition-colors">
-            <Users className="h-5 w-5" />
-            Users
-          </button>
-          <button className="w-full flex items-center gap-3 px-4 py-3 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-white/5 rounded-xl font-medium transition-colors">
-            <Settings className="h-5 w-5" />
-            Settings
-          </button>
-        </nav>
-
-        <div className="mt-8 pt-8 border-t border-gray-200 dark:border-white/10">
-          <div className="flex items-center gap-3 mb-4">
-            {user.profile_image ? (
-              <img src={user.profile_image} alt="Admin" className="w-10 h-10 rounded-full" />
-            ) : (
-              <div className="w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-800" />
-            )}
-            <div className="overflow-hidden">
-              <p className="text-sm font-semibold text-astrian-charcoal dark:text-gray-100 truncate">{user.name}</p>
-              <p className="text-xs text-gray-500 truncate">{user.email}</p>
-            </div>
-          </div>
-          <button 
-            onClick={logout}
-            className="w-full flex items-center justify-center gap-2 px-4 py-2 text-rose-600 dark:text-rose-400 bg-rose-50 dark:bg-rose-900/20 hover:bg-rose-100 dark:hover:bg-rose-900/40 rounded-lg transition-colors text-sm font-medium"
-          >
-            <LogOut className="h-4 w-4" />
-            Sign Out
-          </button>
-        </div>
-      </aside>
-
-      {/* Main Content */}
-      <main className="flex-1 p-8">
+    <AdminLayout title="Dashboard Overview">
+      <div>
         <h1 className="text-3xl font-bold font-display text-astrian-charcoal dark:text-gray-100 mb-2">
-          Welcome back, {user.name}
+          Welcome back, {user?.name?.split(' ')[0]}
         </h1>
         <p className="text-gray-600 dark:text-gray-400 mb-8">
           Here is an overview of what's happening at the studio today.
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          <div className="bg-white dark:bg-[#1c1f1d] p-6 rounded-2xl border border-gray-200 dark:border-white/10 shadow-sm">
-            <h3 className="text-gray-500 dark:text-gray-400 text-sm font-medium mb-2">Today's Sessions</h3>
-            <p className="text-3xl font-bold text-astrian-charcoal dark:text-gray-100">4</p>
-          </div>
-          <div className="bg-white dark:bg-[#1c1f1d] p-6 rounded-2xl border border-gray-200 dark:border-white/10 shadow-sm">
-            <h3 className="text-gray-500 dark:text-gray-400 text-sm font-medium mb-2">Active Bookings</h3>
-            <p className="text-3xl font-bold text-astrian-charcoal dark:text-gray-100">28</p>
-          </div>
-          <div className="bg-white dark:bg-[#1c1f1d] p-6 rounded-2xl border border-gray-200 dark:border-white/10 shadow-sm">
-            <h3 className="text-gray-500 dark:text-gray-400 text-sm font-medium mb-2">Pending Passes</h3>
-            <p className="text-3xl font-bold text-astrian-charcoal dark:text-gray-100">12</p>
-          </div>
+        {/* Stats Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+          {stats.map((stat, idx) => (
+            <div key={idx} className="bg-white dark:bg-[#1c1f1d] p-6 rounded-2xl border border-gray-200 dark:border-white/10 shadow-sm flex items-start gap-4">
+              <div className={`p-3 rounded-xl ${stat.bg}`}>
+                <stat.icon className={`h-6 w-6 ${stat.color}`} />
+              </div>
+              <div>
+                <p className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">{stat.label}</p>
+                <h3 className="text-2xl font-bold text-astrian-charcoal dark:text-gray-100 flex items-center h-8">{stat.value}</h3>
+              </div>
+            </div>
+          ))}
         </div>
 
-        <div className="bg-white dark:bg-[#1c1f1d] border border-gray-200 dark:border-white/10 rounded-2xl shadow-sm p-6">
-          <h2 className="text-xl font-bold text-astrian-charcoal dark:text-gray-100 mb-4">
-            Recent Activity
-          </h2>
-          <div className="text-center py-12 text-gray-500">
-            CRUD APIs are not yet implemented. Activity will appear here once connected to the backend database.
+        {/* Recent Activity Sections */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          
+          <div className="bg-white dark:bg-[#1c1f1d] border border-gray-200 dark:border-white/10 rounded-2xl shadow-sm p-6">
+            <div className="flex items-center gap-2 mb-6">
+              <Activity className="h-5 w-5 text-astrian-sage" />
+              <h2 className="text-xl font-bold text-astrian-charcoal dark:text-gray-100">Recent Bookings</h2>
+            </div>
+            <div className="text-center py-12 text-gray-500 dark:text-gray-400 text-sm bg-gray-50 dark:bg-white/5 rounded-xl border border-dashed border-gray-200 dark:border-white/10">
+              No data yet. CRUD APIs are not implemented.
+            </div>
           </div>
+
+          <div className="bg-white dark:bg-[#1c1f1d] border border-gray-200 dark:border-white/10 rounded-2xl shadow-sm p-6">
+            <div className="flex items-center gap-2 mb-6">
+              <Users className="h-5 w-5 text-astrian-sage" />
+              <h2 className="text-xl font-bold text-astrian-charcoal dark:text-gray-100">Recent Users</h2>
+            </div>
+            <div className="text-center py-12 text-gray-500 dark:text-gray-400 text-sm bg-gray-50 dark:bg-white/5 rounded-xl border border-dashed border-gray-200 dark:border-white/10">
+              No data yet. CRUD APIs are not implemented.
+            </div>
+          </div>
+
+          <div className="bg-white dark:bg-[#1c1f1d] border border-gray-200 dark:border-white/10 rounded-2xl shadow-sm p-6">
+            <div className="flex items-center gap-2 mb-6">
+              <Calendar className="h-5 w-5 text-astrian-sage" />
+              <h2 className="text-xl font-bold text-astrian-charcoal dark:text-gray-100">Upcoming Sessions</h2>
+            </div>
+            <div className="text-center py-12 text-gray-500 dark:text-gray-400 text-sm bg-gray-50 dark:bg-white/5 rounded-xl border border-dashed border-gray-200 dark:border-white/10">
+              No data yet. CRUD APIs are not implemented.
+            </div>
+          </div>
+
+          <div className="bg-white dark:bg-[#1c1f1d] border border-gray-200 dark:border-white/10 rounded-2xl shadow-sm p-6">
+            <div className="flex items-center gap-2 mb-6">
+              <Ticket className="h-5 w-5 text-astrian-sage" />
+              <h2 className="text-xl font-bold text-astrian-charcoal dark:text-gray-100">Sanctuary Pass Requests</h2>
+            </div>
+            <div className="text-center py-12 text-gray-500 dark:text-gray-400 text-sm bg-gray-50 dark:bg-white/5 rounded-xl border border-dashed border-gray-200 dark:border-white/10">
+              No data yet. CRUD APIs are not implemented.
+            </div>
+          </div>
+
         </div>
-      </main>
-    </div>
+
+      </div>
+    </AdminLayout>
   );
 }
